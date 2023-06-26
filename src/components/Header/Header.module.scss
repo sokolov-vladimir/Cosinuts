@@ -1,0 +1,8 @@
+@import url(./../../styles/variables.scss);
+
+.header {
+	padding: 180px 100px 60px;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--color-background);
+}

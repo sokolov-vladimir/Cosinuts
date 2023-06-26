@@ -1,0 +1,10 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles//variables.scss);
+
+.title {
+	font-family: Roboto-Bold;
+	font-size: 72px;
+	line-height: 84px;
+	letter-spacing: 1px;
+	color: var(--color-dark-gray);
+}
