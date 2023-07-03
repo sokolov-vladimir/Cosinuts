@@ -8,26 +8,28 @@ import { Navigation } from "../../../common/Navigation/Navigation";
 
 export function HeaderTop() {
 	return (
-		<div className={styles.headerTop}>
-			<div className={styles.headerLeft}>
-				<Logo />
-				<Navigation />
-			</div>
-			<div className={styles.headerRight}>
-				<a
-					className={styles.phoneNumber}
-					href={`tel: ${constants.phones.beeline}`}
-				>
-					<img src={call} alt="handset" />
-					{constants.phones.beeline}
-				</a>
-				<Link to="/profile" className={styles.profile}>
-					{constants.buttons.profile}
-				</Link>
-				<Link to="/favourites" className={styles.favourites}>
-					{constants.buttons.favourite}
-				</Link>
-				<CartButton />
+		<div className={styles.wrapper}>
+			<div className={styles.headerTop}>
+				<div className={styles.headerLeft}>
+					<Logo logoBig={false} />
+					<Navigation />
+				</div>
+				<div className={styles.headerRight}>
+					<a
+						className={styles.phoneNumber}
+						href={`tel: ${constants.phones.beeline}`}
+					>
+						<img src={call} alt="handset" />
+						{constants.phones.beeline}
+					</a>
+					<Link className={styles.profile} to="/profile" state={true}>
+						{constants.buttons.profile}
+					</Link>
+					<Link className={styles.favourites} to="/favourites" state={true}>
+						{constants.buttons.favourite}
+					</Link>
+					<CartButton />
+				</div>
 			</div>
 		</div>
 	);

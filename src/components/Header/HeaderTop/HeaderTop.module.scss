@@ -1,4 +1,18 @@
 @import url(./../../../styles/fonts.scss);
+@import url(./../../../styles/variables.scss);
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--color-background);
+	box-shadow: 0 2px 4px var(--color-background);
+	text-align: center;
+	z-index: 1;
+}
 
 .headerTop {
 	height: 180px;
@@ -6,10 +20,7 @@
 	max-width: 1720px;
 	display: flex;
 	justify-content: space-between;
-	position: fixed;
-	top: 0;
-	background-color: #f6f9ff;
-	box-shadow: 0 2px 4px #f6f9ff;
+	background-color: var(--color-background);
 	z-index: 1;
 }
 
@@ -25,12 +36,12 @@
 	display: flex;
 	column-gap: 10px;
 	font-family: Roboto-Bold;
-	color: #606060;
+	color: var(--color-navigation);
 }
 
 .profile,
 .favourites {
 	padding: 10px 0;
 	font-family: Roboto-Bold;
-	color: #606060;
+	color: var(--color-navigation);
 }

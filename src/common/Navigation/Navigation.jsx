@@ -10,7 +10,12 @@ export function Navigation() {
 			<div className={styles.content}>
 				{pages.map((page) => {
 					return (
-						<NavLink key={page.id} to={page.url} className={isActiveLink}>
+						<NavLink
+							key={page.id}
+							to={page.url}
+							className={isActiveLink}
+							state={true}
+						>
 							{page.title}
 						</NavLink>
 					);

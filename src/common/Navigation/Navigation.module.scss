@@ -1,4 +1,5 @@
 @import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
 
 .content {
 	display: flex;
@@ -6,5 +7,5 @@
 }
 
 .content a {
-	color: #605f5f;
+	color: var(--color-navigation);
 }

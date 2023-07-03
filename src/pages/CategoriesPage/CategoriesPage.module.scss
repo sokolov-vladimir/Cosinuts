@@ -1,0 +1,37 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
+
+.content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+}
+
+.category {
+	width: 400px;
+	padding: 15px;
+	border-radius: 24px;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--color-background);
+}
+
+.image {
+	border-radius: 24px;
+}
+
+.title {
+	margin: 20px 0;
+	align-self: center;
+	font-family: Roboto-Bold;
+	font-size: 21px;
+	line-height: 25px;
+}
+
+.description {
+	height: 48px;
+	margin-bottom: 20px;
+	font-size: 16px;
+	line-height: 23px;
+	color: var(--color-description);
+}

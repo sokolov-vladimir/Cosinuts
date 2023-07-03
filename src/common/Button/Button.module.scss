@@ -1,0 +1,24 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
+
+.button {
+	height: 55px;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Roboto-Medium;
+	font-size: 24px;
+	line-height: 28px;
+	letter-spacing: 1px;
+	color: var(--color-white);
+	background-color: var(--color-orange-light);
+	cursor: pointer;
+
+	&:hover {
+		font-family: Roboto-Bold;
+		background-color: var(--color-orange-dark);
+	}
+}

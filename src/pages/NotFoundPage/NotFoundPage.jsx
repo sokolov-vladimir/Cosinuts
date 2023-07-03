@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./NotFoundPage.module.scss";
+import { Button } from "../../common/Button/Button";
 import { constants } from "../../constants/constants";
+import { Container } from "../../common/Container/Container";
+import { Title } from "../../common/Title/Title";
 
 export function NotFoundPage() {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate("/");
+	};
+
 	return (
-		<div>
-			<span>Такой страницы не существует.</span>
-			<span>
-				Перейти на <Link to={constants.routes.main}>Главную страницу</Link>
-			</span>
-		</div>
+		<Container>
+			<Title title={constants.notFoundPage.error} />
+			<span className={styles.message}>{constants.notFoundPage.message}</span>
+			<Button title={constants.notFoundPage.return} handleClick={handleClick} />
+		</Container>
 	);
 }

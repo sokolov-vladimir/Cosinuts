@@ -1,4 +1,5 @@
 @import url(./../../../../styles/fonts.scss);
+@import url(./../../../../styles/variables.scss);
 
 .cartButton {
 	width: 150px;
@@ -9,17 +10,17 @@
 	column-gap: 10px;
 	justify-content: space-between;
 	align-items: center;
-	background-color: rgba(254, 179, 2, 0.45);
+	background-color: var(--color-orange-light);
 
 	&:hover {
-		border-radius: 13.3679px;
-		background-color: rgba(254, 179, 2, 0.75);
+		border-radius: 14px;
+		background-color: var(--color-orange-dark);
 	}
 }
 
 .title {
 	font-family: Roboto-Bold;
-	color: #fff;
+	color: var(--color-white);
 }
 
 .count {
@@ -30,6 +31,6 @@
 	justify-content: center;
 	align-items: center;
 	font-family: Roboto-Bold;
-	color: #444;
-	background-color: #fff;
+	color: var(--color-navigation);
+	background-color: var(--color-white);
 }

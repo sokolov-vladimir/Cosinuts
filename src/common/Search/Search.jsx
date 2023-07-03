@@ -1,5 +1,6 @@
 import styles from "./Search.module.scss";
 import magnifier from "./../../assets/images/icon_magnifier.svg";
+import { constants } from "../../constants/constants";
 
 export function Search() {
 	return (
@@ -7,7 +8,7 @@ export function Search() {
 			<input
 				className={styles.searchField}
 				type="search"
-				placeholder="Поиск товаров"
+				placeholder={constants.placeholders.search}
 			></input>
 			<div className={styles.searchButton}>
 				<img src={magnifier} alt="magnifier" />

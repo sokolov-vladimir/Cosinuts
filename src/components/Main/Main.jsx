@@ -3,8 +3,8 @@ import { Router } from "../../routes/Router";
 
 export function Main() {
 	return (
-		<div>
-			<Router />
-		</div>
+		// <div>
+		<Router />
+		// </div>
 	);
 }
