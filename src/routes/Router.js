@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AboutPage } from "../pages/AboutPage/AboutPage";
 import { CatalogPage } from "../pages/CatalogPage/CatalogPage";
-import { CategoriesPage } from "../pages/CategoriesPage/CategoriesPage";
+import { CategoryPage } from "./../pages/CategoryPage/CategoryPage.jsx";
 import { constants } from "../constants/constants";
 import { ContactsPage } from "../pages/ContactsPage/ContactsPage";
 import { DeliveryPage } from "../pages/DeliveryPage/DeliveryPage";
@@ -15,7 +15,7 @@ export function Router() {
 			<Route path={constants.routes.catalog} element={<CatalogPage />} />
 			<Route path={constants.routes.contacts} element={<ContactsPage />} />
 			<Route path={constants.routes.delivery} element={<DeliveryPage />} />
-			<Route path={constants.routes.main} element={<CategoriesPage />} />
+			<Route path={constants.routes.main} element={<CategoryPage />} />
 			<Route path={constants.routes.notFound} element={<NotFoundPage />} />
 			<Route path={constants.routes.stores} element={<StoresPage />} />
 		</Routes>

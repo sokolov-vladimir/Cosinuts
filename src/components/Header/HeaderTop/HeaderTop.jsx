@@ -4,7 +4,7 @@ import call from "./../../../assets/images/icon_call.svg";
 import { CartButton } from "./CartButton/CartButton";
 import { constants } from "../../../constants/constants";
 import { Logo } from "../../../common/Logo/Logo";
-import { Navigation } from "../../../common/Navigation/Navigation";
+import { PagesNavigation } from "../../../common/Navigation/PagesNavigation/PagesNavigation";
 
 export function HeaderTop() {
 	return (
@@ -12,15 +12,15 @@ export function HeaderTop() {
 			<div className={styles.headerTop}>
 				<div className={styles.headerLeft}>
 					<Logo logoBig={false} />
-					<Navigation />
+					<PagesNavigation />
 				</div>
 				<div className={styles.headerRight}>
 					<a
 						className={styles.phoneNumber}
-						href={`tel: ${constants.phones.beeline}`}
+						href={`tel: ${constants.contacts.phones.beeline}`}
 					>
 						<img src={call} alt="handset" />
-						{constants.phones.beeline}
+						{constants.contacts.phones.beeline}
 					</a>
 					<Link className={styles.profile} to="/profile" state={true}>
 						{constants.buttons.profile}

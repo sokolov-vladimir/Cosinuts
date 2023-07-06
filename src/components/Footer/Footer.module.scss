@@ -1,0 +1,61 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
+
+.footer {
+	padding: 40px 100px;
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--color-background);
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--color-background);
+	box-shadow: 0 2px 4px var(--color-background);
+	text-align: center;
+	z-index: 1;
+}
+
+.block {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	color: var(--color-main-content);
+}
+
+.logo {
+	align-items: center;
+}
+
+.socials {
+	width: 184px;
+}
+
+.link {
+	font-family: Roboto-Bold;
+	font-size: 27px;
+	line-height: 32px;
+	color: var(--color-black);
+}
+
+.stores_items {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.stores_items::before {
+	content: url(./../../assets/images/icon_point.svg);
+	display: block;
+	height: 24px;
+	width: 24px;
+}
+
+.categoryNavigation {
+	gap: 20px;
+}

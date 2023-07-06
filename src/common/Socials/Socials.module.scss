@@ -1,0 +1,16 @@
+.socials {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.socials_image {
+	height: 48px;
+	width: 48px;
+	display: block;
+	transition: all 0.2s linear;
+}
+
+.socials_image:hover {
+	transform: scale(1.2);
+}

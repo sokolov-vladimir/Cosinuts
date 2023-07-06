@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import styles from "./Navigation.module.scss";
-import { pages } from "../../data/pages";
+import styles from "./PagesNavigation.module.scss";
+import { pages } from "./../../../data/pages";
 
-export function Navigation() {
+export function PagesNavigation() {
 	const isActiveLink = ({ isActive }) => (isActive ? "active-link" : "");
 
 	return (
@@ -11,9 +11,9 @@ export function Navigation() {
 				{pages.map((page) => {
 					return (
 						<NavLink
+							className={isActiveLink}
 							key={page.id}
 							to={page.url}
-							className={isActiveLink}
 							state={true}
 						>
 							{page.title}

@@ -1,0 +1,10 @@
+@import url(./../../../styles/variables.scss);
+
+.navigation {
+	display: flex;
+	flex-direction: column;
+}
+
+.link {
+	color: var(--color-main-content);
+}
