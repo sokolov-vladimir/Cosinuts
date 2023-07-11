@@ -1,18 +1,10 @@
-@import url(./../../styles/fonts.scss);
-@import url(./../../styles/variables.scss);
-
-.content {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 40px;
-}
-
-.category {
+.card {
 	width: 400px;
 	padding: 15px;
 	border-radius: 24px;
 	display: flex;
 	flex-direction: column;
+	gap: 20px;
 	background-color: var(--color-background);
 }
 
@@ -32,8 +24,15 @@
 	transform: scale(1.08);
 }
 
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	text-align: center;
+}
+
 .title {
-	margin: 20px 0;
+	// margin: 20px 0;
 	align-self: center;
 	font-family: Roboto-Bold;
 	font-size: 21px;
@@ -42,9 +41,20 @@
 
 .description {
 	height: 48px;
-	margin-bottom: 20px;
+	// margin-bottom: 20px;
 	font-size: 16px;
 	line-height: 23px;
-	text-align: center;
+	// text-align: center;
 	color: var(--color-description);
+}
+
+.price_box {
+	display: flex;
+	justify-content: space-between;
+}
+
+.price {
+}
+
+.measurement {
 }

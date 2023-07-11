@@ -7,6 +7,7 @@ import { ContactsPage } from "../pages/ContactsPage/ContactsPage";
 import { DeliveryPage } from "../pages/DeliveryPage/DeliveryPage";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 import { StoresPage } from "../pages/StoresPage/StoresPage";
+import { CartPage } from "../pages/CartPage/CartPage";
 
 export function Router() {
 	return (
@@ -17,7 +18,9 @@ export function Router() {
 			<Route path={constants.routes.delivery} element={<DeliveryPage />} />
 			<Route path={constants.routes.main} element={<CategoryPage />} />
 			<Route path={constants.routes.notFound} element={<NotFoundPage />} />
+			<Route path={constants.routes.products} element={<CatalogPage />} />
 			<Route path={constants.routes.stores} element={<StoresPage />} />
+			<Route path="/cart" element={<CartPage />} />
 		</Routes>
 	);
 }

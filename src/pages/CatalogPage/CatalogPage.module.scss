@@ -1,0 +1,57 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
+
+.container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.navigation {
+	width: 400px;
+	padding: 32px;
+	border-radius: 24px;
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+	gap: 16px;
+	background-color: var(--color-background);
+}
+
+.navigation_title {
+	padding-left: 16px;
+	font-family: Roboto-Bold;
+	font-size: 21px;
+	line-height: 25px;
+	letter-spacing: 1px;
+}
+
+.content {
+	width: 100%;
+	max-width: 1280px;
+	display: flex;
+	flex-direction: column;
+	gap: 80px;
+}
+
+.content_top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.content_main {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.add_navigation a {
+	padding: 16px;
+}
+
+.add_activeLink {
+	border-radius: 16px;
+	align-self: flex-start;
+	color: var(--color-white);
+	background-color: var(--color-orange-dark);
+}

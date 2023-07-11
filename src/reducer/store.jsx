@@ -1,11 +1,27 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
+import cartSlice from "./cartSlice";
 import productSlice from "./productSlice";
 
 const rootReducer = combineReducers({
-	products: productSlice,
+	cartSlice: cartSlice,
+	productSlice: productSlice,
 });
 
 export const store = configureStore({
 	reducer: rootReducer,
 });
+
+// import { combineReducers } from "redux";
+// import { configureStore } from "@reduxjs/toolkit";
+// import cartSlice from "./cartSlice";
+// import productSlice from "./productSlice";
+
+// const rootReducer = combineReducers({
+// 	cart: cartSlice,
+// 	products: productSlice,
+// });
+
+// export const store = configureStore({
+// 	reducer: rootReducer,
+// });

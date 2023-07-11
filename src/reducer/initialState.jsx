@@ -1,7 +1,7 @@
 import category_dried_fruits from "./../assets/images/category_dried_fruits.jpg";
 import category_nuts from "./../assets/images/category_nuts.jpg";
-import apricots from "./../assets/images/product_apricots.png";
-import cashew from "./../assets/images/product_cashew.png";
+import apricots from "./../assets/images/product_driedApricots.png";
+import brazilNut from "./../assets/images/product_brazilNut.png";
 
 export const initialState = [
 	{
@@ -76,9 +76,9 @@ export const initialState = [
 				weight: 340,
 				price: 620,
 				cartPrice: 0,
-				cartCount: 0,
+				cartCount: 0.2,
 				images: {
-					src: cashew,
+					src: brazilNut,
 					alt: "cashew",
 				},
 				caloric: {
@@ -98,7 +98,7 @@ export const initialState = [
 				cartPrice: 0,
 				cartCount: 0,
 				images: {
-					src: cashew,
+					src: brazilNut,
 					alt: "cashew",
 				},
 				caloric: {

@@ -5,6 +5,14 @@ export const constants = {
 		favourite: "Избранное",
 		profile: "Войти",
 	},
+	contacts: {
+		address: "г. Москва, ул. Кубанонабережная 56",
+		mail: "cosinuts@gmail.com",
+		phones: {
+			beeline: "+7 (903) 111-11-11",
+			megaphone: "+7 (925) 222-22-22",
+		},
+	},
 	notFoundPage: {
 		error: "404",
 		message: "Похоже, мы не можем найти нужную вам страницу...",
@@ -18,15 +26,6 @@ export const constants = {
 		main: "Главная",
 		stores: "Магазины",
 	},
-	contacts: {
-		address: "г. Москва, ул. Кубанонабережная 56",
-		mail: "cosinuts@gmail.com",
-		phones: {
-			beeline: "+7 (903) 111-11-11",
-			megaphone: "+7 (925) 222-22-22",
-		},
-	},
-
 	placeholders: {
 		search: "Поиск товаров",
 	},
@@ -37,6 +36,7 @@ export const constants = {
 		delivery: "/delivery",
 		main: "/",
 		notFound: "*",
+		products: "/catalog/:url",
 		stores: "/stores",
 	},
 	socials: {
