@@ -6,9 +6,6 @@ import { CounterCart } from "./CounterCart/CounterCart";
 import { increaseWeight, decreaseWeight } from "../../reducer/productSlice";
 
 export function Counter({ product, category, addStyles }) {
-	console.log(product);
-	console.log(category);
-
 	const dispatch = useDispatch();
 	const { cartWeight } = product;
 	const [isShowWeight, setIsShowWeight] = useState(!!cartWeight);

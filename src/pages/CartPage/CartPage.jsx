@@ -90,22 +90,19 @@ export function CartPage() {
 						))}
 					</div>
 
-					<div className={styles.total}>
-						<div className={styles.totalBox}>
-							<span className={styles.totalTitle}>Итого к оплате: </span>
-							<span className={styles.totalPrice}>
-								{totalPrice().toLocaleString()} &#x20bd;
-							</span>
+					{basket.length ? (
+						<div className={styles.total}>
+							<div className={styles.totalBox}>
+								<span className={styles.totalTitle}>Итого к оплате: </span>
+								<span className={styles.totalPrice}>
+									{totalPrice().toLocaleString()} &#x20bd;
+								</span>
+							</div>
+							<Button isLink={true} to="/order" title="Оформить заказ" />
 						</div>
-						<Button isLink={true} to="/order" title="Оформить заказ" />
-						{/* <Link */}
-						{/* className={styles.totalButton}
-							// to={constants.routs.order}
-							state="true"
-						> */}
-						{/* {constants.common.place_order} */}
-						{/* </Link> */}
-					</div>
+					) : (
+						<div>Корзина пуста</div>
+					)}
 				</div>
 			</div>
 		</Container>

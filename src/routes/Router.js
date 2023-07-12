@@ -8,6 +8,7 @@ import { DeliveryPage } from "../pages/DeliveryPage/DeliveryPage";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 import { StoresPage } from "../pages/StoresPage/StoresPage";
 import { CartPage } from "../pages/CartPage/CartPage";
+import { ProductPage } from "../pages/ProductPage/ProductPage";
 
 export function Router() {
 	return (
@@ -21,6 +22,7 @@ export function Router() {
 			<Route path={constants.routes.products} element={<CatalogPage />} />
 			<Route path={constants.routes.stores} element={<StoresPage />} />
 			<Route path="/cart" element={<CartPage />} />
+			<Route path="/catalog/:url/:id" element={<ProductPage />} />
 		</Routes>
 	);
 }

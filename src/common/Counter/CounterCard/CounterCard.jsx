@@ -11,7 +11,7 @@ export function CounterCard({
 	handleWeightSub,
 	handleButtonClick,
 }) {
-	const { price: productPrice, cartPrice, cartWeight, id } = product;
+	const { price, cartPrice, cartWeight, id } = product;
 
 	if (isShowWeight) {
 		return (
@@ -48,7 +48,8 @@ export function CounterCard({
 			</span> */}
 
 			<Button
-				title={urlID ? "Корзина" : "В корзину"}
+				title="В корзину"
+				// title={urlID ? "Корзина" : "В корзину"}
 				image={urlID ? bag : cart}
 				id={id}
 				handleClick={handleButtonClick}
