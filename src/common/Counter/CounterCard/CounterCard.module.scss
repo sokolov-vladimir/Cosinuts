@@ -1,0 +1,32 @@
+@import url(./../../../styles/fonts.scss);
+@import url(./../../../styles/variables.scss);
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.price {
+	font-family: Roboto-Bold;
+	font-size: 18px;
+}
+
+.weightBox {
+	// width: 160px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+}
+
+.weight {
+}
+
+.addStylesButton {
+	flex: 1;
+}
+
+.addStylesButtonWeight {
+	width: 55px;
+}

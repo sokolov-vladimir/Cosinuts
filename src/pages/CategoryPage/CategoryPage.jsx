@@ -7,8 +7,7 @@ import { Container } from "../../common/Container/Container";
 import { Title } from "../../common/Title/Title";
 
 export function CategoryPage() {
-	// const stage = useSelector((stage) => stage.products.products);
-	const stage = useSelector((stage) => stage.productSlice.productInitialState);
+	const stage = useSelector((stage) => stage.products.products);
 
 	return (
 		<Container>

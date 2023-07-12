@@ -10,12 +10,12 @@
 	column-gap: 10px;
 	justify-content: space-between;
 	align-items: center;
-	background-color: var(--color-orange-light);
+	background-color: var(--color-button-dim);
 	transition: all 0.2s linear;
 
 	&:hover {
 		border-radius: 14px;
-		background-color: var(--color-orange-dark);
+		background-color: var(--color-button-bright);
 	}
 }
 

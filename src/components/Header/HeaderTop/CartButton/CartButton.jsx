@@ -1,11 +1,24 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "./CartButton.module.scss";
 import { constants } from "../../../../constants/constants";
-import { useSelector } from "react-redux";
 
 export function CartButton() {
-	const cartCount = useSelector((state) => state.cartSlice.cartInitialState);
-	// const cartCount = useSelector((state) => state.cart.cartCount);
+	const state = useSelector((state) => state.products.products);
+	const [cartCount, setCartCount] = useState(0);
+
+	useEffect(() => {
+		let count = 0;
+
+		state.forEach((category) => {
+			category.products.forEach((product) => {
+				count += product.cartCount;
+			});
+		});
+
+		setCartCount(count);
+	}, [state]);
 
 	return (
 		<Link className={styles.cartButton} to="/cart" state={true}>

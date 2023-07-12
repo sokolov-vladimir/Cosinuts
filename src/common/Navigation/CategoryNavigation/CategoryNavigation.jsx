@@ -4,9 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 export function CategoryNavigation({ addStyles, activeLink }) {
 	// const category = useSelector((stage) => stage.products.products);
-	const category = useSelector(
-		(state) => state.productSlice.productInitialState
-	);
+	const category = useSelector((state) => state.products.products);
 
 	const { url } = useParams();
 

@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import styles from "./CatalogPage.module.scss";
 import { Card } from "../../common/Card/Card";
@@ -10,13 +9,8 @@ import { Search } from "../../common/Search/Search";
 import { Title } from "../../common/Title/Title";
 
 export function CatalogPage() {
-	// const state = useSelector((state) => state.products.products);
-	const state = useSelector((state) => state.productSlice.productInitialState);
-	const dispatch = useDispatch();
+	const state = useSelector((state) => state.products.products);
 	const { url } = useParams();
-
-	// const array = useSelector((state) => state.cart.cartArray);
-	// console.log(array);
 
 	const { products, url: categoryURL } = state.find((category) => {
 		return url === undefined
@@ -45,13 +39,7 @@ export function CatalogPage() {
 
 					<div className={styles.content_main}>
 						{products.map((product) => (
-							<Card
-								category={categoryURL}
-								// dispatch={dispatch}
-								product={product}
-								dispatch={dispatch}
-								key={product.id}
-							/>
+							<Card category={categoryURL} key={product.id} product={product} />
 						))}
 					</div>
 

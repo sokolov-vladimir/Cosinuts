@@ -14,12 +14,12 @@
 	line-height: 28px;
 	letter-spacing: 1px;
 	color: var(--color-white);
-	background-color: var(--color-orange-light);
+	background-color: var(--color-button-dim);
 	cursor: pointer;
 	transition: all 0.2s linear;
 
 	&:hover {
 		font-family: Roboto-Bold;
-		background-color: var(--color-orange-dark);
+		background-color: var(--color-button-bright);
 	}
 }

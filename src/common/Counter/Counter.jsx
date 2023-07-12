@@ -1,46 +1,42 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
-// import { BasketCounterCommon } from "./BasketCounterCommon/BasketCounterCommon";
-// import { BasketCounterCart } from "./BasketCounterCart/BasketCounterCart";
+import { useState } from "react";
 import { CounterCard } from "./CounterCard/CounterCard";
 import { CounterCart } from "./CounterCart/CounterCart";
-// import { addCartCount, subCartCount } from "../../reducer/cartSlice";
-// import { increasePrice, decreasePrice } from "../../reducer/productSlice";
-import { addCartCount, subCartCount } from "../../reducer/cartSlice";
-import { increasePrice, decreasePrice } from "../../reducer/productSlice";
+import { increaseWeight, decreaseWeight } from "../../reducer/productSlice";
 
-export function Counter({ product, dispatch, category, addStyles }) {
-	// console.log(product);
-	const { cartCount } = product;
-	const [isShowCount, setIsShowCount] = useState(!!cartCount);
-	const { id: urlId } = useParams();
+export function Counter({ product, category, addStyles }) {
+	console.log(product);
+	console.log(category);
+
+	const dispatch = useDispatch();
+	const { cartWeight } = product;
+	const [isShowWeight, setIsShowWeight] = useState(!!cartWeight);
+	const { id: urlID } = useParams();
 	const { pathname } = useLocation();
 	const isCartPage = pathname === "/cart";
 
-	const handleCountAdd = ({ currentTarget }) => {
-		dispatch(addCartCount());
-		dispatch(increasePrice({ id: currentTarget.id, category: category }));
+	const handleWeightAdd = ({ currentTarget }) => {
+		dispatch(increaseWeight({ id: currentTarget.id, category: category }));
 	};
 
-	const handleCountSub = ({ currentTarget }) => {
-		if (cartCount === 1) setIsShowCount(!isShowCount);
-		dispatch(subCartCount());
-		dispatch(decreasePrice({ id: currentTarget.id, category: category }));
+	const handleWeightSub = ({ currentTarget }) => {
+		if (cartWeight === 0.2) setIsShowWeight(!isShowWeight);
+		dispatch(decreaseWeight({ id: currentTarget.id, category: category }));
 	};
 
-	const handleCartClick = ({ currentTarget }) => {
-		setIsShowCount(!isShowCount);
-		dispatch(addCartCount());
-		dispatch(increasePrice({ id: currentTarget.id, category: category }));
+	const handleButtonClick = ({ currentTarget }) => {
+		setIsShowWeight(!isShowWeight);
+		dispatch(increaseWeight({ id: currentTarget.id, category: category }));
 	};
 
 	const render = () => {
 		if (isCartPage) {
 			return (
 				<CounterCart
+					handleWeightAdd={handleWeightAdd}
+					handleWeightSub={handleWeightSub}
 					product={product}
-					handleCountAdd={handleCountAdd}
-					handleCountSub={handleCountSub}
 				/>
 			);
 		} else {
@@ -48,11 +44,11 @@ export function Counter({ product, dispatch, category, addStyles }) {
 				<CounterCard
 					addStyles={addStyles}
 					product={product}
-					urlId={urlId}
-					isShowCount={isShowCount}
-					handleCountAdd={handleCountAdd}
-					handleCountSub={handleCountSub}
-					handleCartClick={handleCartClick}
+					urlID={urlID}
+					isShowWeight={isShowWeight}
+					handleWeightAdd={handleWeightAdd}
+					handleWeightSub={handleWeightSub}
+					handleButtonClick={handleButtonClick}
 				/>
 			);
 		}

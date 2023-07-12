@@ -1,22 +1,22 @@
 import styles from "./CounterCart.module.scss";
 import { Button } from "../../Button/Button";
 
-export function CounterCart({ product, handleCountAdd, handleCountSub }) {
-	const { cartPrice, cartCount, id } = product;
+export function CounterCart({ product, handleWeightAdd, handleWeightSub }) {
+	const { cartPrice, cartWeight, id } = product;
 
 	return (
 		<div className={styles.container}>
 			<Button
 				title="-"
 				id={id}
-				handleClick={handleCountSub}
+				handleClick={handleWeightSub}
 				addStyles={styles.addStylesButton}
 			/>
-			<span className={styles.counter}>{cartCount}</span>
+			<span className={styles.counter}>{cartWeight}</span>
 			<Button
 				title="+"
 				id={id}
-				handleClick={handleCountAdd}
+				handleClick={handleWeightAdd}
 				addStyles={styles.addStylesButton}
 			/>
 			<span className={styles.price}>

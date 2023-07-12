@@ -31,11 +31,11 @@
 	align-items: center;
 	position: absolute;
 	left: 522px;
-	background-color: var(--color-orange-light);
+	background-color: var(--color-button-dim);
 	cursor: pointer;
 	transition: all 0.2s linear;
 
 	&:hover {
-		background-color: var(--color-orange-dark);
+		background-color: var(--color-button-bright);
 	}
 }

@@ -1,3 +1,6 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
+
 .card {
 	width: 400px;
 	padding: 15px;
@@ -54,6 +57,8 @@
 }
 
 .price {
+	// font-family: Roboto-Bold;
+	// font-size: 18px;
 }
 
 .measurement {
