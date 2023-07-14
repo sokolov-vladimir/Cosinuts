@@ -4,8 +4,14 @@ import { useValidate } from "./../../validation/useValidate";
 import { Container } from "../../common/Container/Container";
 import { Title } from "../../common/Title/Title";
 import { OrderSection } from "./OrderSection/OrderSection";
+import { collectOrder } from "../../helper/collectOrder";
+import { useSelector } from "react-redux";
+import { Button } from "./../../common/Button/Button";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../../reducer/productSlice";
 
-const initialState = {
+const orderState = {
 	delivery: "pickup",
 	payment: "cash",
 	name: "",
@@ -21,9 +27,13 @@ const initialState = {
 };
 
 export function OrderPage() {
-	const [state, setState] = useState(initialState);
+	const products = useSelector((state) => state.products.products);
+	const order = collectOrder(products);
+	const [state, setState] = useState(orderState);
 	const [isDisabled, setIsDisabled] = useState(true);
 	const { error, validate } = useValidate();
+	const [isHandleOrder, setIsHandleOrder] = useState(false);
+	const dispatch = useDispatch();
 
 	const handleChange = ({ target }) => {
 		const { name, type, value, checked } = target;
@@ -34,7 +44,24 @@ export function OrderPage() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+	};
+
+	const handleOrder = () => {
+		order.map((product) => {
+			dispatch(
+				deleteProduct({
+					id: product.id,
+					category: product.url,
+				})
+			);
+		});
+
+		setIsHandleOrder(true);
 		console.log(state);
+	};
+
+	const totalPrice = () => {
+		return order.reduce((sum, product) => sum + product.cartPrice, 0);
 	};
 
 	useEffect(() => {
@@ -57,25 +84,35 @@ export function OrderPage() {
 		state.cookie,
 	]);
 
+	if (isHandleOrder) {
+		return (
+			<Container>
+				<Title title="Оформление заказа" />
+				<h2>Ваш заказ успешно оформлен!</h2>
+			</Container>
+		);
+	}
+
 	return (
 		<Container>
 			<Title title="Оформление заказа" />
-			<div className="app">
-				<form className="entry" onSubmit={handleSubmit}>
+			<div className={styles.container}>
+				<form className={styles.form_container} onSubmit={handleSubmit}>
 					<OrderSection title="Способ доставки">
 						<div className={styles.radio_box}>
-							<label htmlFor="pickup">Самовывоз</label>
+							<label htmlFor="pickup">самовывоз</label>
 							<input
 								id="pickup"
 								name="delivery"
 								type="radio"
 								value="pickup"
+								className={styles.radio}
 								checked={state.delivery === "pickup"}
 								onChange={handleChange}
 							/>
 						</div>
 						<div className={styles.radio_box}>
-							<label htmlFor="courier">Доставка курьером</label>
+							<label htmlFor="courier">доставка курьером</label>
 							<input
 								id="courier"
 								name="delivery"
@@ -85,7 +122,7 @@ export function OrderPage() {
 							/>
 						</div>
 						<div className={styles.radio_box}>
-							<label htmlFor="postOfice">Доставка до отделения Белпочты</label>
+							<label htmlFor="postOfice">доставка до отделения Белпочты</label>
 							<input
 								id="postOfice"
 								name="delivery"
@@ -96,7 +133,7 @@ export function OrderPage() {
 						</div>
 						<div className={styles.radio_box}>
 							<label htmlFor="courierPostOfice">
-								Доставка курьером Белпочты
+								доставка курьером Белпочты
 							</label>
 							<input
 								id="courierPostOfice"
@@ -110,7 +147,7 @@ export function OrderPage() {
 
 					<OrderSection title="Способ оплаты">
 						<div className={styles.radio_box}>
-							<label htmlFor="cash">Наличными при получении</label>
+							<label htmlFor="cash">наличными при получении</label>
 							<input
 								id="cash"
 								name="payment"
@@ -121,7 +158,7 @@ export function OrderPage() {
 							/>
 						</div>
 						<div className={styles.radio_box}>
-							<label htmlFor="card">Банковской картой при получении</label>
+							<label htmlFor="card">банковской картой при получении</label>
 							<input
 								id="card"
 								name="payment"
@@ -131,7 +168,7 @@ export function OrderPage() {
 							/>
 						</div>
 						<div className={styles.radio_box}>
-							<label htmlFor="epos">Онлайн-платёж e-Pos</label>
+							<label htmlFor="epos">онлайн-платёж e-Pos</label>
 							<input
 								id="epos"
 								name="payment"
@@ -141,7 +178,7 @@ export function OrderPage() {
 							/>
 						</div>
 						<div className={styles.radio_box}>
-							<label htmlFor="erip">Онлайн-платёж через систему ЕРИП</label>
+							<label htmlFor="erip">онлайн-платёж через систему ЕРИП</label>
 							<input
 								id="erip"
 								name="payment"
@@ -153,9 +190,14 @@ export function OrderPage() {
 					</OrderSection>
 
 					<OrderSection title="Контактные данные">
-						<span>* полйа обйазательные длйа заполненийа</span>
 						<div>
-							<label htmlFor="name">ФИО</label>
+							<span className={styles.star}>*</span> поля обязательные для
+							заполнения
+						</div>
+						<div className={styles.input_box}>
+							<label className={styles.required} htmlFor="name">
+								ФИО
+							</label>
 							<input
 								id="name"
 								name="name"
@@ -164,10 +206,12 @@ export function OrderPage() {
 								placeholder="Введите ФИО"
 								onChange={handleChange}
 							/>
-							<span>{error.name}</span>
+							<span className={styles.error}>{error.name}</span>
 						</div>
-						<div>
-							<label htmlFor="phone">Телефон</label>
+						<div className={styles.input_box}>
+							<label className={styles.required} htmlFor="phone">
+								Телефон
+							</label>
 							<input
 								id="phone"
 								name="phone"
@@ -176,10 +220,10 @@ export function OrderPage() {
 								placeholder="Введите номер телефона"
 								onChange={handleChange}
 							/>
-							<span style={{ color: "red" }}>{error.phone}</span>
+							<span className={styles.error}>{error.phone}</span>
 						</div>
-						<div>
-							<label>Город</label>
+						<div className={styles.input_box}>
+							<label className={styles.required}>Город</label>
 							<select name="city" onChange={handleChange}>
 								<option value="minsk">Минск</option>
 								<option value="vitebsk">Витебск</option>
@@ -189,9 +233,11 @@ export function OrderPage() {
 								<option value="brest">Брест</option>
 							</select>
 						</div>
-						<div>
-							<div>
-								<label htmlFor="street">Улица</label>
+						<div className={styles.address_box}>
+							<div className={styles.input_box}>
+								<label className={styles.required} htmlFor="street">
+									Улица
+								</label>
 								<input
 									id="street"
 									name="street"
@@ -200,10 +246,12 @@ export function OrderPage() {
 									placeholder="Введите название улицы"
 									onChange={handleChange}
 								/>
-								<span>{error.street}</span>
+								<span className={styles.error}>{error.street}</span>
 							</div>
-							<div>
-								<label htmlFor="house">Дом</label>
+							<div className={styles.input_box}>
+								<label className={styles.required} htmlFor="house">
+									Дом
+								</label>
 								<input
 									id="house"
 									name="house"
@@ -212,11 +260,11 @@ export function OrderPage() {
 									placeholder="Введите номер дома"
 									onChange={handleChange}
 								/>
-								<span>{error.house}</span>
+								<span className={styles.error}>{error.house}</span>
 							</div>
 						</div>
-						<div>
-							<div>
+						<div className={styles.address_box}>
+							<div className={styles.input_box}>
 								<label htmlFor="building">Корпус</label>
 								<input
 									id="building"
@@ -227,7 +275,7 @@ export function OrderPage() {
 									onChange={handleChange}
 								/>
 							</div>
-							<div>
+							<div className={styles.input_box}>
 								<label htmlFor="flat">Квартира</label>
 								<input
 									id="flat"
@@ -239,8 +287,8 @@ export function OrderPage() {
 								/>
 							</div>
 						</div>
-						<div>
-							<div>
+						<div className={styles.address_box}>
+							<div className={styles.input_box}>
 								<label htmlFor="entrance">Подъезд</label>
 								<input
 									id="entrance"
@@ -251,7 +299,7 @@ export function OrderPage() {
 									onChange={handleChange}
 								/>
 							</div>
-							<div>
+							<div className={styles.input_box}>
 								<label htmlFor="floor">Этаж</label>
 								<input
 									id="floor"
@@ -263,27 +311,65 @@ export function OrderPage() {
 								/>
 							</div>
 						</div>
-						<div>
-							<label htmlFor="cookie">
-								Мы используем файлы Cookie для улучшения работы, персонализации
-								и повышения удобства пользования нашим сайтом.
-							</label>
+						<div className={styles.cookie_box}>
 							<input
 								id="cookie"
 								type="checkbox"
 								name="cookie"
 								value={state.cookie}
 								onChange={handleChange}
-								// onChange={(event) => handleChange(event)}
 							/>
+							<label className={styles.cookie_label} htmlFor="cookie">
+								Мы используем файлы Cookie для улучшения работы, персонализации
+								и повышения удобства пользования нашим сайтом.
+							</label>
 						</div>
 
-						<button type="submit" disabled={isDisabled}>
-							Заказать
-						</button>
+						<Button
+							title="Заказать"
+							disabled={isDisabled}
+							handleClick={handleOrder}
+							addStyles={
+								isDisabled
+									? styles.button_is_disabled
+									: styles.button_is_not_disabled
+							}
+						/>
 					</OrderSection>
 				</form>
-				<div>Заказ</div>
+
+				<section className={styles.order_container}>
+					<h4 className={styles.order_title}>Ваш заказ</h4>
+					{order.map((product) => (
+						<div className={styles.order_product} key={product.id}>
+							<Link
+								className={styles.product_image_box}
+								state={true}
+								to={`/catalog/${product.url}/${product.id}`}
+							>
+								<img
+									className={styles.product_image}
+									src={product.images.src}
+									alt={product.images.alt}
+								></img>
+							</Link>
+							<span className={styles.product_title}>{product.title}</span>
+							<span className={styles.product_weight}>
+								{product.cartWeight} кг
+							</span>
+							<span className={styles.product_price}>
+								{product.cartPrice.toFixed(2)} &#x20bd;
+							</span>
+						</div>
+					))}
+					<div className={styles.order_total_sum}>
+						<span>Итого к оплате:</span>
+						<span className={styles.total_sum}>
+							{totalPrice().toFixed(2)} &#x20bd;
+						</span>
+						{/* {totalPrice().toLocaleString()} &#x20bd; */}
+					</div>
+				</section>
 			</div>
 		</Container>
 	);

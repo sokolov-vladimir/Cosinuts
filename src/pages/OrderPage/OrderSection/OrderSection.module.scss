@@ -1,0 +1,13 @@
+@import url(./../../../styles/fonts.scss);
+@import url(./../../../styles/variables.scss);
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	// color: var(--color-content);
+}
+
+.title {
+	margin-bottom: 10px;
+}

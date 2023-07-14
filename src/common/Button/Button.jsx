@@ -3,6 +3,7 @@ import styles from "./Button.module.scss";
 
 export function Button({
 	addStyles,
+	disabled = false,
 	handleClick,
 	id,
 	isLink = false,
@@ -20,6 +21,7 @@ export function Button({
 	return (
 		<button
 			id={id}
+			disabled={disabled}
 			className={`${styles.button} ${addStyles}`}
 			onClick={handleClick}
 		>

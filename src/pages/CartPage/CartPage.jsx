@@ -10,27 +10,32 @@ import { useEffect } from "react";
 import { deleteProduct } from "../../reducer/productSlice";
 import { Link } from "react-router-dom";
 import { Button } from "../../common/Button/Button";
+import { collectOrder } from "../../helper/collectOrder";
 
 export function CartPage() {
-	const state = useSelector((state) => state.products.products);
 	const dispatch = useDispatch();
+	const state = useSelector((state) => state.products.products);
 	const [basket, setBasket] = useState([]);
 
 	useEffect(() => {
-		const basketState = [];
-
-		state.forEach((category) => {
-			category.products.forEach((product) => {
-				if (product.cartCount > 0) {
-					product = { ...product, url: category.url };
-					basketState.push(product);
-				}
-			});
-		});
-
-		setBasket(basketState);
-		localStorage.setItem("basket", JSON.stringify(basketState));
+		setBasket(collectOrder(state));
 	}, [state]);
+
+	// useEffect(() => {
+	// 	const basketState = [];
+
+	// 	state.forEach((category) => {
+	// 		category.products.forEach((product) => {
+	// 			if (product.cartCount > 0) {
+	// 				product = { ...product, url: category.url };
+	// 				basketState.push(product);
+	// 			}
+	// 		});
+	// 	});
+
+	// 	setBasket(basketState);
+	// 	localStorage.setItem("basket", JSON.stringify(basketState));
+	// }, [state]);
 
 	const removeProduct = (id, url, cartCount) => {
 		const newBasket = basket.filter((product) => product.id !== id);
@@ -95,7 +100,8 @@ export function CartPage() {
 							<div className={styles.totalBox}>
 								<span className={styles.totalTitle}>Итого к оплате: </span>
 								<span className={styles.totalPrice}>
-									{totalPrice().toLocaleString()} &#x20bd;
+									{/* {totalPrice().toLocaleString()} &#x20bd; */}
+									{totalPrice().toFixed(2)} &#x20bd;
 								</span>
 							</div>
 							<Button isLink={true} to="/order" title="Оформить заказ" />
