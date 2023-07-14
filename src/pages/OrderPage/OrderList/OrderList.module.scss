@@ -1,0 +1,60 @@
+@import url(./../../../styles/fonts.scss);
+@import url(./../../../styles/variables.scss);
+
+.order_container {
+	width: 100%;
+	max-width: 600px;
+	padding: 20px;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+	gap: 20px;
+	background-color: var(--color-background);
+}
+
+.order_title {
+	align-self: center;
+}
+
+.order_product {
+	padding: 20px;
+	border: 1px solid #000;
+	border-radius: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+.product_image {
+	width: 100px;
+	border-radius: 4px;
+	display: block;
+}
+
+.product_title {
+	width: 100%;
+	max-width: 200px;
+}
+
+.product_weight {
+	width: 100%;
+	max-width: 60px;
+	text-align: center;
+}
+
+.product_price {
+	width: 100%;
+	max-width: 100px;
+	text-align: center;
+}
+
+.order_total_sum {
+	display: flex;
+	justify-content: space-between;
+}
+
+.total_sum {
+	width: 120px;
+}

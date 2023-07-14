@@ -10,36 +10,42 @@ import { Button } from "./../../common/Button/Button";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../reducer/productSlice";
+import { changeOrderSlice } from "../../reducer/orderSlice";
+import { OrderForm } from "./OrderForm/OrderForm";
+import { OrderList } from "./OrderList/OrderList";
 
-const orderState = {
-	delivery: "pickup",
-	payment: "cash",
-	name: "",
-	phone: "+375(29)1234567",
-	city: "minsk",
-	street: "",
-	house: "",
-	building: "",
-	flat: "",
-	entrance: "",
-	floor: "",
-	cookie: false,
-};
+// const orderState = {
+// 	delivery: "pickup",
+// 	payment: "cash",
+// 	name: "",
+// 	phone: "+375(29)1234567",
+// 	city: "minsk",
+// 	street: "",
+// 	house: "",
+// 	building: "",
+// 	flat: "",
+// 	entrance: "",
+// 	floor: "",
+// 	cookie: false,
+// };
 
 export function OrderPage() {
-	const products = useSelector((state) => state.products.products);
-	const order = collectOrder(products);
-	const [state, setState] = useState(orderState);
+	const productsState = useSelector((state) => state.products.products);
+	const orderList = collectOrder(productsState);
+	// const [state, setState] = useState(orderState);
 	const [isDisabled, setIsDisabled] = useState(true);
 	const { error, validate } = useValidate();
 	const [isHandleOrder, setIsHandleOrder] = useState(false);
 	const dispatch = useDispatch();
 
+	const orderState = useSelector((state) => state.order.order);
+
 	const handleChange = ({ target }) => {
 		const { name, type, value, checked } = target;
-		const stateValue = type === "checkbox" ? checked : value;
 		validate(name, value);
-		setState({ ...state, [name]: stateValue });
+
+		const stateValue = type === "checkbox" ? checked : value;
+		dispatch(changeOrderSlice({ name, stateValue }));
 	};
 
 	const handleSubmit = (event) => {
@@ -47,7 +53,7 @@ export function OrderPage() {
 	};
 
 	const handleOrder = () => {
-		order.map((product) => {
+		orderList.map((product) => {
 			dispatch(
 				deleteProduct({
 					id: product.id,
@@ -57,31 +63,31 @@ export function OrderPage() {
 		});
 
 		setIsHandleOrder(true);
-		console.log(state);
+		console.log(orderState);
 	};
 
 	const totalPrice = () => {
-		return order.reduce((sum, product) => sum + product.cartPrice, 0);
+		return orderList.reduce((sum, product) => sum + product.cartPrice, 0);
 	};
 
 	useEffect(() => {
 		const disable =
 			Object.values(error).find((element) => element !== "") ||
-			state.name === "" ||
-			state.phone === "" ||
-			state.city === "" ||
-			state.street === "" ||
-			state.house === "" ||
-			state.cookie === false;
+			orderState.name === "" ||
+			orderState.phone === "" ||
+			orderState.city === "" ||
+			orderState.street === "" ||
+			orderState.house === "" ||
+			orderState.cookie === false;
 		setIsDisabled(disable);
 	}, [
 		error,
-		state.name,
-		state.phone,
-		state.city,
-		state.street,
-		state.house,
-		state.cookie,
+		orderState.name,
+		orderState.phone,
+		orderState.city,
+		orderState.street,
+		orderState.house,
+		orderState.cookie,
 	]);
 
 	if (isHandleOrder) {
@@ -97,7 +103,15 @@ export function OrderPage() {
 		<Container>
 			<Title title="Оформление заказа" />
 			<div className={styles.container}>
-				<form className={styles.form_container} onSubmit={handleSubmit}>
+				<OrderForm
+					handleSubmit={handleSubmit}
+					handleChange={handleChange}
+					isDisabled={isDisabled}
+					handleOrder={handleOrder}
+					orderState={orderState}
+					error={error}
+				/>
+				{/* <form className={styles.form_container} onSubmit={handleSubmit}>
 					<OrderSection title="Способ доставки">
 						<div className={styles.radio_box}>
 							<label htmlFor="pickup">самовывоз</label>
@@ -107,7 +121,7 @@ export function OrderPage() {
 								type="radio"
 								value="pickup"
 								className={styles.radio}
-								checked={state.delivery === "pickup"}
+								checked={orderState.delivery === "pickup"}
 								onChange={handleChange}
 							/>
 						</div>
@@ -153,7 +167,7 @@ export function OrderPage() {
 								name="payment"
 								type="radio"
 								value="cash"
-								checked={state.payment === "cash"}
+								checked={orderState.payment === "cash"}
 								onChange={handleChange}
 							/>
 						</div>
@@ -202,7 +216,7 @@ export function OrderPage() {
 								id="name"
 								name="name"
 								type="text"
-								value={state.name}
+								value={orderState.name}
 								placeholder="Введите ФИО"
 								onChange={handleChange}
 							/>
@@ -216,7 +230,7 @@ export function OrderPage() {
 								id="phone"
 								name="phone"
 								type="tel"
-								value={state.phone}
+								value={orderState.phone}
 								placeholder="Введите номер телефона"
 								onChange={handleChange}
 							/>
@@ -242,7 +256,7 @@ export function OrderPage() {
 									id="street"
 									name="street"
 									type="text"
-									value={state.street}
+									value={orderState.street}
 									placeholder="Введите название улицы"
 									onChange={handleChange}
 								/>
@@ -256,7 +270,7 @@ export function OrderPage() {
 									id="house"
 									name="house"
 									type="text"
-									value={state.house}
+									value={orderState.house}
 									placeholder="Введите номер дома"
 									onChange={handleChange}
 								/>
@@ -270,7 +284,7 @@ export function OrderPage() {
 									id="building"
 									name="building"
 									type="text"
-									value={state.building}
+									value={orderState.building}
 									placeholder="Введите номер корпуса"
 									onChange={handleChange}
 								/>
@@ -281,7 +295,7 @@ export function OrderPage() {
 									id="flat"
 									name="flat"
 									type="text"
-									value={state.flat}
+									value={orderState.flat}
 									placeholder="Введите номер квартиры"
 									onChange={handleChange}
 								/>
@@ -294,7 +308,7 @@ export function OrderPage() {
 									id="entrance"
 									name="entrance"
 									type="text"
-									value={state.entrance}
+									value={orderState.entrance}
 									placeholder="Введите номер подъезда"
 									onChange={handleChange}
 								/>
@@ -305,7 +319,7 @@ export function OrderPage() {
 									id="floor"
 									name="floor"
 									type="text"
-									value={state.floor}
+									value={orderState.floor}
 									placeholder="Введите номер этажа"
 									onChange={handleChange}
 								/>
@@ -316,7 +330,7 @@ export function OrderPage() {
 								id="cookie"
 								type="checkbox"
 								name="cookie"
-								value={state.cookie}
+								value={orderState.cookie}
 								onChange={handleChange}
 							/>
 							<label className={styles.cookie_label} htmlFor="cookie">
@@ -336,9 +350,10 @@ export function OrderPage() {
 							}
 						/>
 					</OrderSection>
-				</form>
+				</form> */}
 
-				<section className={styles.order_container}>
+				<OrderList orderList={orderList} totalPrice={totalPrice} />
+				{/* <section className={styles.order_container}>
 					<h4 className={styles.order_title}>Ваш заказ</h4>
 					{order.map((product) => (
 						<div className={styles.order_product} key={product.id}>
@@ -367,9 +382,8 @@ export function OrderPage() {
 						<span className={styles.total_sum}>
 							{totalPrice().toFixed(2)} &#x20bd;
 						</span>
-						{/* {totalPrice().toLocaleString()} &#x20bd; */}
 					</div>
-				</section>
+				</section> */}
 			</div>
 		</Container>
 	);
