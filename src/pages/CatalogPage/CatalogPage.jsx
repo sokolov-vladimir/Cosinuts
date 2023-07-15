@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useSelector } from "react-redux";
 import styles from "./CatalogPage.module.scss";
 import { Card } from "../../common/Card/Card";
 import { CategoryNavigation } from "../../common/Navigation/CategoryNavigation/CategoryNavigation";
@@ -9,10 +9,10 @@ import { Search } from "../../common/Search/Search";
 import { Title } from "../../common/Title/Title";
 
 export function CatalogPage() {
-	const state = useSelector((state) => state.products.products);
+	const productsState = useSelector((state) => state.products.products);
 	const { url } = useParams();
 
-	const { products, url: categoryURL } = state.find((category) => {
+	const { products, url: categoryURL } = productsState.find((category) => {
 		return url === undefined
 			? category.url === "dried-fruits"
 			: category.url === url;
@@ -24,10 +24,10 @@ export function CatalogPage() {
 
 			<div className={styles.container}>
 				<div className={styles.navigation}>
-					<h4 className={styles.navigation_title}>Каталог</h4>
+					<h4 className={styles.navigation_title}>{constants.pages.catalog}</h4>
 					<CategoryNavigation
-						addStyles={styles.add_navigation}
 						activeLink={styles.add_activeLink}
+						addStyles={styles.add_navigation}
 					/>
 				</div>
 

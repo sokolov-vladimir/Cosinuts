@@ -1,61 +1,42 @@
-import styles from "./CartPage.module.scss";
-import { constants } from "../../constants/constants";
-import { Container } from "../../common/Container/Container";
-import { Title } from "../../common/Title/Title";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Counter } from "../../common/Counter/Counter";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { deleteProduct } from "../../reducer/productSlice";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import styles from "./CartPage.module.scss";
 import { Button } from "../../common/Button/Button";
 import { collectOrder } from "../../helper/collectOrder";
+import { constants } from "../../constants/constants";
+import { Container } from "../../common/Container/Container";
+import { Counter } from "../../common/Counter/Counter";
+import { deleteProduct } from "../../reducer/productSlice";
+import { Title } from "../../common/Title/Title";
 
 export function CartPage() {
+	const productsState = useSelector((state) => state.products.products);
 	const dispatch = useDispatch();
-	const state = useSelector((state) => state.products.products);
 	const [basket, setBasket] = useState([]);
 
 	useEffect(() => {
-		setBasket(collectOrder(state));
-	}, [state]);
+		setBasket(collectOrder(productsState));
+	}, [productsState]);
 
-	// useEffect(() => {
-	// 	const basketState = [];
-
-	// 	state.forEach((category) => {
-	// 		category.products.forEach((product) => {
-	// 			if (product.cartCount > 0) {
-	// 				product = { ...product, url: category.url };
-	// 				basketState.push(product);
-	// 			}
-	// 		});
-	// 	});
-
-	// 	setBasket(basketState);
-	// 	localStorage.setItem("basket", JSON.stringify(basketState));
-	// }, [state]);
-
-	const removeProduct = (id, url, cartCount) => {
+	const removeProduct = (id, url) => {
 		const newBasket = basket.filter((product) => product.id !== id);
 		setBasket(newBasket);
-		// dispatch(subCartCount(cartCount));
 		dispatch(
 			deleteProduct({
-				id: id,
 				category: url,
+				id: id,
 			})
 		);
 	};
 
-	const totalPrice = () => {
+	const countTotalPrice = () => {
 		return basket.reduce((sum, product) => sum + product.cartPrice, 0);
 	};
 
 	return (
 		<Container>
-			<Title title="Корзина" />
+			<Title title={constants.titles.cart} />
 			<div>
 				<div className={styles.container}>
 					<div className={styles.order}>
@@ -63,12 +44,12 @@ export function CartPage() {
 							<div className={styles.product} key={product.id}>
 								<div className={styles.productAbout}>
 									<Link
-										to={`/catalog/${product.url}/${product.id}`}
 										state={true}
+										to={`${constants.routes.catalog}/${product.url}/${product.id}`}
 									>
 										<img
-											src={product.images.src}
 											alt={product.images.alt}
+											src={product.images.src}
 										></img>
 									</Link>
 									<div className={styles.titleBox}>
@@ -78,17 +59,16 @@ export function CartPage() {
 								</div>
 								<div className={styles.productDetails}>
 									<Counter
-										product={product}
-										// dispatch={dispatch}
-										category={product.url}
 										addStyles={styles}
+										category={product.url}
+										product={product}
 									/>
 									<Button
-										title="&times;"
-										handleClick={() =>
-											removeProduct(product.id, product.url, product.cartCount)
-										}
 										addStyles={styles.addStylesButton}
+										handleClick={() =>
+											removeProduct(product.cartCount, product.id, product.url)
+										}
+										title="&times;"
 									/>
 								</div>
 							</div>
@@ -98,16 +78,21 @@ export function CartPage() {
 					{basket.length ? (
 						<div className={styles.total}>
 							<div className={styles.totalBox}>
-								<span className={styles.totalTitle}>Итого к оплате: </span>
+								<span className={styles.totalTitle}>
+									{constants.cartPage.totalSum}{" "}
+								</span>
 								<span className={styles.totalPrice}>
-									{/* {totalPrice().toLocaleString()} &#x20bd; */}
-									{totalPrice().toFixed(2)} &#x20bd;
+									{countTotalPrice().toFixed(2)} &#x20bd;
 								</span>
 							</div>
-							<Button isLink={true} to="/order" title="Оформить заказ" />
+							<Button
+								isLink={true}
+								title={constants.buttons.placeOrder}
+								to={constants.routes.order}
+							/>
 						</div>
 					) : (
-						<div>Корзина пуста</div>
+						<div>{constants.cartPage.emptyBasket}</div>
 					)}
 				</div>
 			</div>

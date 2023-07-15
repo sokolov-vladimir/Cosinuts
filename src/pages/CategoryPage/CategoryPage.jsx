@@ -7,23 +7,23 @@ import { Container } from "../../common/Container/Container";
 import { Title } from "../../common/Title/Title";
 
 export function CategoryPage() {
-	const stage = useSelector((stage) => stage.products.products);
+	const productsState = useSelector((state) => state.products.products);
 
 	return (
 		<Container>
 			<Title title={constants.titles.category} />
 			<div className={styles.content}>
-				{stage.map((category) => (
+				{productsState.map((category) => (
 					<div className={styles.category} key={category.id}>
 						<Link
 							className={styles.image_box}
-							to={`${constants.routes.catalog}/${category.url}`}
 							state={true}
+							to={`${constants.routes.catalog}/${category.url}`}
 						>
 							<img
+								alt={category.image.alt}
 								className={styles.image}
 								src={category.image.src}
-								alt={category.image.alt}
 							/>
 						</Link>
 						<h4 className={styles.title}>{category.title}</h4>

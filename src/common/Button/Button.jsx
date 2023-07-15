@@ -12,20 +12,20 @@ export function Button({
 }) {
 	if (isLink) {
 		return (
-			<Link className={styles.button} to={to} state={true}>
+			<Link className={styles.button} state={true} to={to}>
 				{title}
 			</Link>
 		);
+	} else {
+		return (
+			<button
+				className={`${addStyles} ${styles.button} `}
+				disabled={disabled}
+				id={id}
+				onClick={handleClick}
+			>
+				{title}
+			</button>
+		);
 	}
-
-	return (
-		<button
-			id={id}
-			disabled={disabled}
-			className={`${styles.button} ${addStyles}`}
-			onClick={handleClick}
-		>
-			{title}
-		</button>
-	);
 }

@@ -13,8 +13,8 @@ export function PagesNavigation() {
 						<NavLink
 							className={isActiveLink}
 							key={page.id}
-							to={page.url}
 							state={true}
+							to={page.url}
 						>
 							{page.title}
 						</NavLink>

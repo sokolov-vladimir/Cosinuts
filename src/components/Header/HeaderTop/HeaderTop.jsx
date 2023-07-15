@@ -17,17 +17,17 @@ export function HeaderTop() {
 				<div className={styles.headerRight}>
 					<a
 						className={styles.phoneNumber}
-						href={`tel: ${constants.contacts.phones.beeline}`}
+						href={`tel: ${constants.contacts.phones.mts}`}
 					>
 						<img src={call} alt="handset" />
-						{constants.contacts.phones.beeline}
+						{constants.contacts.phones.mts}
 					</a>
 					<Link className={styles.profile} to="/profile" state={true}>
 						{constants.buttons.profile}
 					</Link>
-					<Link className={styles.favourites} to="/favourites" state={true}>
+					{/* <Link className={styles.favourites} state={true} to="/favourites" >
 						{constants.buttons.favourite}
-					</Link>
+					</Link> */}
 					<CartButton />
 				</div>
 			</div>

@@ -1,60 +1,50 @@
 import styles from "./CounterCard.module.scss";
-import cart from "./../../../assets/images/icon_cart.svg";
-import bag from "./../../../assets/images/icon_bag.svg";
 import { Button } from "../../Button/Button";
+import { constants } from "../../../constants/constants";
 
 export function CounterCard({
-	product,
-	urlID,
-	isShowWeight,
+	addStyles,
+	handleButtonClick,
 	handleWeightAdd,
 	handleWeightSub,
-	handleButtonClick,
+	isShowWeight,
+	product,
 }) {
-	const { price, cartPrice, cartWeight, id } = product;
+	const { cartPrice, cartWeight, id } = product;
 
 	if (isShowWeight) {
 		return (
 			<div className={styles.container}>
-				<span>В корзине </span>
+				<span>{constants.counter.inCart} </span>
 				<div className={styles.weightBox}>
 					<Button
-						title="-"
-						id={id}
-						handleClick={handleWeightSub}
 						addStyles={styles.addStylesButtonWeight}
+						handleClick={handleWeightSub}
+						id={id}
+						title={constants.buttons.minus}
 					/>
 					<span className={styles.weight}>{cartWeight.toFixed(1)}</span>
 					<Button
-						title="+"
-						id={id}
-						handleClick={handleWeightAdd}
 						addStyles={styles.addStylesButtonWeight}
+						handleClick={handleWeightAdd}
+						id={id}
+						title={constants.buttons.plus}
 					/>
-					<span>кг</span>
+					<span>{constants.measurement.kilo}</span>
 				</div>
-				<span className={styles.price}>
-					{/* {cartPrice.toFixed(2).toLocaleString()} &#x20bd; */}
-					{cartPrice.toFixed(2)} &#x20bd;
-				</span>
+				<span className={styles.price}>{cartPrice.toFixed(2)} &#x20bd;</span>
+			</div>
+		);
+	} else {
+		return (
+			<div className={styles.container}>
+				<Button
+					addStyles={styles.addStylesButton}
+					handleClick={handleButtonClick}
+					id={id}
+					title={constants.buttons.inCart}
+				/>
 			</div>
 		);
 	}
-
-	return (
-		<div className={styles.container}>
-			{/* <span className={styles.price}>
-				{productPrice.toLocaleString()} &#x20bd;
-			</span> */}
-
-			<Button
-				title="В корзину"
-				// title={urlID ? "Корзина" : "В корзину"}
-				image={urlID ? bag : cart}
-				id={id}
-				handleClick={handleButtonClick}
-				addStyles={styles.addStylesButton}
-			/>
-		</div>
-	);
 }

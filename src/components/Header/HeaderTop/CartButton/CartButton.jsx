@@ -5,23 +5,23 @@ import styles from "./CartButton.module.scss";
 import { constants } from "../../../../constants/constants";
 
 export function CartButton() {
-	const state = useSelector((state) => state.products.products);
+	const productsState = useSelector((state) => state.products.products);
 	const [cartCount, setCartCount] = useState(0);
 
 	useEffect(() => {
 		let count = 0;
 
-		state.forEach((category) => {
+		productsState.forEach((category) => {
 			category.products.forEach((product) => {
 				count += product.cartCount;
 			});
 		});
 
 		setCartCount(count);
-	}, [state]);
+	}, [productsState]);
 
 	return (
-		<Link className={styles.cartButton} to="/cart" state={true}>
+		<Link className={styles.cartButton} state={true} to={constants.routes.cart}>
 			<span className={styles.title}>{constants.buttons.cart}</span>
 			<span className={styles.count}>{cartCount}</span>
 		</Link>

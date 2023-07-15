@@ -1,30 +1,31 @@
 import { useDispatch } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { CounterCard } from "./CounterCard/CounterCard";
 import { CounterCart } from "./CounterCart/CounterCart";
-import { increaseWeight, decreaseWeight } from "../../reducer/productSlice";
+import { decreaseWeight, increaseWeight } from "../../reducer/productSlice";
 
-export function Counter({ product, category, addStyles }) {
-	const dispatch = useDispatch();
+export function Counter({ addStyles, category, product }) {
 	const { cartWeight } = product;
 	const [isShowWeight, setIsShowWeight] = useState(!!cartWeight);
-	const { id: urlID } = useParams();
+
 	const { pathname } = useLocation();
 	const isCartPage = pathname === "/cart";
 
+	const dispatch = useDispatch();
+
 	const handleWeightAdd = ({ currentTarget }) => {
-		dispatch(increaseWeight({ id: currentTarget.id, category: category }));
+		dispatch(increaseWeight({ category: category, id: currentTarget.id }));
 	};
 
 	const handleWeightSub = ({ currentTarget }) => {
 		if (cartWeight === 0.2) setIsShowWeight(!isShowWeight);
-		dispatch(decreaseWeight({ id: currentTarget.id, category: category }));
+		dispatch(decreaseWeight({ category: category, id: currentTarget.id }));
 	};
 
 	const handleButtonClick = ({ currentTarget }) => {
 		setIsShowWeight(!isShowWeight);
-		dispatch(increaseWeight({ id: currentTarget.id, category: category }));
+		dispatch(increaseWeight({ category: category, id: currentTarget.id }));
 	};
 
 	const render = () => {
@@ -40,12 +41,11 @@ export function Counter({ product, category, addStyles }) {
 			return (
 				<CounterCard
 					addStyles={addStyles}
-					product={product}
-					urlID={urlID}
-					isShowWeight={isShowWeight}
+					handleButtonClick={handleButtonClick}
 					handleWeightAdd={handleWeightAdd}
 					handleWeightSub={handleWeightSub}
-					handleButtonClick={handleButtonClick}
+					isShowWeight={isShowWeight}
+					product={product}
 				/>
 			);
 		}

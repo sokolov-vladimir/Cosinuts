@@ -1,40 +1,40 @@
-import facebook from "./../assets/images/icon_social_facebook.svg";
-import instagram from "./../assets/images/icon_social_instagram.svg";
-import telegram from "./../assets/images/icon_social_telegram.svg";
-import twitter from "./../assets/images/icon_social_twitter.svg";
-import whatsapp from "./../assets/images/icon_social_whatsapp.svg";
-import youtube from "./../assets/images/icon_social_youtube.svg";
+import icon_social_facebook from "./../assets/images/icon_social_facebook.svg";
+import icon_social_instagram from "./../assets/images/icon_social_instagram.svg";
+import icon_social_telegram from "./../assets/images/icon_social_telegram.svg";
+import icon_social_twitter from "./../assets/images/icon_social_twitter.svg";
+import icon_social_whatsapp from "./../assets/images/icon_social_whatsapp.svg";
+import icon_social_youtube from "./../assets/images/icon_social_youtube.svg";
 import { constants } from "../constants/constants";
 
 export const socials = [
 	{
-		title: constants.socials.altFacebook,
 		href: constants.socials.refFacebook,
-		img: facebook,
+		img: icon_social_facebook,
+		title: constants.socials.altFacebook,
 	},
 	{
-		title: constants.socials.altInstagram,
 		href: constants.socials.refInstagram,
-		img: instagram,
+		img: icon_social_instagram,
+		title: constants.socials.altInstagram,
 	},
 	{
-		title: constants.socials.altTelegram,
 		href: constants.socials.refTelegram,
-		img: telegram,
+		img: icon_social_telegram,
+		title: constants.socials.altTelegram,
 	},
 	{
-		title: constants.socials.altTwitter,
 		href: constants.socials.refTwitter,
-		img: twitter,
+		img: icon_social_twitter,
+		title: constants.socials.altTwitter,
 	},
 	{
-		title: constants.socials.altWhatsapp,
 		href: constants.socials.refWhatsapp,
-		img: whatsapp,
+		img: icon_social_whatsapp,
+		title: constants.socials.altWhatsapp,
 	},
 	{
-		title: constants.socials.altYoutube,
 		href: constants.socials.refYoutube,
-		img: youtube,
+		img: icon_social_youtube,
+		title: constants.socials.altYoutube,
 	},
 ];

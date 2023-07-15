@@ -1,244 +1,253 @@
 import styles from "./OrderForm.module.scss";
-import { OrderSection } from "../OrderSection/OrderSection";
+import { constants } from "../../../constants/constants";
 import { Button } from "../../../common/Button/Button";
+import { OrderSection } from "../OrderSection/OrderSection";
 
 export function OrderForm({
-	handleSubmit,
-	handleChange,
-	isDisabled,
-	handleOrder,
-	orderState,
 	error,
+	formState,
+	handleChange,
+	handleOrder,
+	handleSubmit,
+	isDisabled,
 }) {
 	return (
 		<form className={styles.form_container} onSubmit={handleSubmit}>
-			<OrderSection title="Способ доставки">
+			<OrderSection title={constants.orderForm.titleDelivery}>
 				<div className={styles.radio_box}>
-					<label htmlFor="pickup">самовывоз</label>
+					<label htmlFor="pickup">{constants.orderForm.labelPickup}</label>
 					<input
+						checked={formState.delivery === "pickup"}
 						id="pickup"
 						name="delivery"
+						onChange={handleChange}
 						type="radio"
 						value="pickup"
-						className={styles.radio}
-						checked={orderState.delivery === "pickup"}
-						onChange={handleChange}
 					/>
 				</div>
 				<div className={styles.radio_box}>
-					<label htmlFor="courier">доставка курьером</label>
+					<label htmlFor="courier">{constants.orderForm.labelСourier}</label>
 					<input
 						id="courier"
 						name="delivery"
+						onChange={handleChange}
 						type="radio"
 						value="courier"
-						onChange={handleChange}
 					/>
 				</div>
 				<div className={styles.radio_box}>
-					<label htmlFor="postOfice">доставка до отделения Белпочты</label>
+					<label htmlFor="postOfice">
+						{constants.orderForm.labelPostOfice}
+					</label>
 					<input
 						id="postOfice"
 						name="delivery"
+						onChange={handleChange}
 						type="radio"
 						value="postofice"
-						onChange={handleChange}
 					/>
 				</div>
 				<div className={styles.radio_box}>
-					<label htmlFor="courierPostOfice">доставка курьером Белпочты</label>
+					<label htmlFor="courierPostOfice">
+						{constants.orderForm.labelCourierPostOfice}
+					</label>
 					<input
 						id="courierPostOfice"
 						name="delivery"
+						onChange={handleChange}
 						type="radio"
 						value="courierPostOfice"
-						onChange={handleChange}
 					/>
 				</div>
 			</OrderSection>
 
-			<OrderSection title="Способ оплаты">
+			<OrderSection title={constants.orderForm.titlePayment}>
 				<div className={styles.radio_box}>
-					<label htmlFor="cash">наличными при получении</label>
+					<label htmlFor="cash">{constants.orderForm.labelСash}</label>
 					<input
+						checked={formState.payment === "cash"}
 						id="cash"
 						name="payment"
+						onChange={handleChange}
 						type="radio"
 						value="cash"
-						checked={orderState.payment === "cash"}
-						onChange={handleChange}
 					/>
 				</div>
 				<div className={styles.radio_box}>
-					<label htmlFor="card">банковской картой при получении</label>
+					<label htmlFor="card">{constants.orderForm.labelСard}</label>
 					<input
 						id="card"
 						name="payment"
+						onChange={handleChange}
 						type="radio"
 						value="card"
-						onChange={handleChange}
 					/>
 				</div>
 				<div className={styles.radio_box}>
-					<label htmlFor="epos">онлайн-платёж e-Pos</label>
+					<label htmlFor="epos">{constants.orderForm.labelEpos}</label>
 					<input
 						id="epos"
 						name="payment"
+						onChange={handleChange}
 						type="radio"
 						value="epos"
-						onChange={handleChange}
 					/>
 				</div>
 				<div className={styles.radio_box}>
-					<label htmlFor="erip">онлайн-платёж через систему ЕРИП</label>
+					<label htmlFor="erip">{constants.orderForm.labelErip}</label>
 					<input
 						id="erip"
 						name="payment"
+						onChange={handleChange}
 						type="radio"
 						value="erip"
-						onChange={handleChange}
 					/>
 				</div>
 			</OrderSection>
 
-			<OrderSection title="Контактные данные">
+			<OrderSection title={constants.orderForm.titleContacts}>
 				<div>
-					<span className={styles.star}>*</span> поля обязательные для
-					заполнения
+					<span className={styles.star}>{constants.symbols.star}</span>{" "}
+					{constants.orderForm.required}
 				</div>
 				<div className={styles.input_box}>
 					<label className={styles.required} htmlFor="name">
-						ФИО
+						{constants.orderForm.labelName}
 					</label>
 					<input
 						id="name"
 						name="name"
-						type="text"
-						value={orderState.name}
-						placeholder="Введите ФИО"
 						onChange={handleChange}
+						placeholder={constants.placeholders.name}
+						type="text"
+						value={formState.name}
 					/>
 					<span className={styles.error}>{error.name}</span>
 				</div>
 				<div className={styles.input_box}>
 					<label className={styles.required} htmlFor="phone">
-						Телефон
+						{constants.orderForm.labelPhone}
 					</label>
 					<input
 						id="phone"
 						name="phone"
-						type="tel"
-						value={orderState.phone}
-						placeholder="Введите номер телефона"
 						onChange={handleChange}
+						placeholder={constants.placeholders.phone}
+						type="tel"
+						value={formState.phone}
 					/>
 					<span className={styles.error}>{error.phone}</span>
 				</div>
 				<div className={styles.input_box}>
-					<label className={styles.required}>Город</label>
+					<label className={styles.required}>
+						{constants.orderForm.labelСity}
+					</label>
 					<select name="city" onChange={handleChange}>
-						<option value="minsk">Минск</option>
-						<option value="vitebsk">Витебск</option>
-						<option value="gomel">Гомель</option>
-						<option value="mogilev">Могилев</option>
-						<option value="grodno">Гродно</option>
-						<option value="brest">Брест</option>
+						<option value="minsk">{constants.cities.minsk}</option>
+						<option value="vitebsk">{constants.cities.vitebsk}</option>
+						<option value="gomel">{constants.cities.gomel}</option>
+						<option value="mogilev">{constants.cities.mogilev}</option>
+						<option value="grodno">{constants.cities.grodno}</option>
+						<option value="brest">{constants.cities.brest}</option>
 					</select>
 				</div>
 				<div className={styles.address_box}>
 					<div className={styles.input_box}>
 						<label className={styles.required} htmlFor="street">
-							Улица
+							{constants.orderForm.labelStreet}
 						</label>
 						<input
 							id="street"
 							name="street"
-							type="text"
-							value={orderState.street}
-							placeholder="Введите название улицы"
 							onChange={handleChange}
+							placeholder={constants.placeholders.street}
+							type="text"
+							value={formState.street}
 						/>
 						<span className={styles.error}>{error.street}</span>
 					</div>
 					<div className={styles.input_box}>
 						<label className={styles.required} htmlFor="house">
-							Дом
+							{constants.orderForm.labelHouse}
 						</label>
 						<input
 							id="house"
 							name="house"
-							type="text"
-							value={orderState.house}
-							placeholder="Введите номер дома"
 							onChange={handleChange}
+							placeholder={constants.placeholders.house}
+							type="text"
+							value={formState.house}
 						/>
 						<span className={styles.error}>{error.house}</span>
 					</div>
 				</div>
 				<div className={styles.address_box}>
 					<div className={styles.input_box}>
-						<label htmlFor="building">Корпус</label>
+						<label htmlFor="building">
+							{constants.orderForm.labelBuilding}
+						</label>
 						<input
 							id="building"
 							name="building"
-							type="text"
-							value={orderState.building}
-							placeholder="Введите номер корпуса"
 							onChange={handleChange}
+							placeholder={constants.placeholders.building}
+							type="text"
+							value={formState.building}
 						/>
 					</div>
 					<div className={styles.input_box}>
-						<label htmlFor="flat">Квартира</label>
+						<label htmlFor="flat">{constants.orderForm.labelFlat}</label>
 						<input
 							id="flat"
 							name="flat"
-							type="text"
-							value={orderState.flat}
-							placeholder="Введите номер квартиры"
 							onChange={handleChange}
+							placeholder={constants.placeholders.flat}
+							type="text"
+							value={formState.flat}
 						/>
 					</div>
 				</div>
 				<div className={styles.address_box}>
 					<div className={styles.input_box}>
-						<label htmlFor="entrance">Подъезд</label>
+						<label htmlFor="entrance">
+							{constants.orderForm.labelEntrance}
+						</label>
 						<input
 							id="entrance"
 							name="entrance"
-							type="text"
-							value={orderState.entrance}
-							placeholder="Введите номер подъезда"
 							onChange={handleChange}
+							placeholder={constants.placeholders.entrance}
+							type="text"
+							value={formState.entrance}
 						/>
 					</div>
 					<div className={styles.input_box}>
-						<label htmlFor="floor">Этаж</label>
+						<label htmlFor="floor">{constants.orderForm.labelFloor}</label>
 						<input
 							id="floor"
 							name="floor"
-							type="text"
-							value={orderState.floor}
-							placeholder="Введите номер этажа"
 							onChange={handleChange}
+							placeholder={constants.placeholders.floor}
+							type="text"
+							value={formState.floor}
 						/>
 					</div>
 				</div>
 				<div className={styles.cookie_box}>
 					<input
 						id="cookie"
-						type="checkbox"
 						name="cookie"
-						value={orderState.cookie}
 						onChange={handleChange}
+						value={formState.cookie}
+						type="checkbox"
 					/>
 					<label className={styles.cookie_label} htmlFor="cookie">
-						Мы используем файлы Cookie для улучшения работы, персонализации и
-						повышения удобства пользования нашим сайтом.
+						{constants.orderForm.labelСookie}
 					</label>
 				</div>
 
 				<Button
-					title="Заказать"
+					title={constants.buttons.order}
 					disabled={isDisabled}
 					handleClick={handleOrder}
 					addStyles={

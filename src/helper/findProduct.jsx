@@ -1,5 +1,5 @@
 export const findProduct = (state, action) => {
-	const { id, category } = action.payload;
+	const { category, id } = action.payload;
 	let product = null;
 
 	state.products.forEach((element) => {

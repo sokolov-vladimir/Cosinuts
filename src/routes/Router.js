@@ -15,16 +15,16 @@ export function Router() {
 	return (
 		<Routes>
 			<Route path={constants.routes.about} element={<AboutPage />} />
+			<Route path={constants.routes.cart} element={<CartPage />} />
 			<Route path={constants.routes.catalog} element={<CatalogPage />} />
 			<Route path={constants.routes.contacts} element={<ContactsPage />} />
 			<Route path={constants.routes.delivery} element={<DeliveryPage />} />
 			<Route path={constants.routes.main} element={<CategoryPage />} />
 			<Route path={constants.routes.notFound} element={<NotFoundPage />} />
+			<Route path={constants.routes.order} element={<OrderPage />} />
+			<Route path={constants.routes.product} element={<ProductPage />} />
 			<Route path={constants.routes.products} element={<CatalogPage />} />
 			<Route path={constants.routes.stores} element={<StoresPage />} />
-			<Route path="/cart" element={<CartPage />} />
-			<Route path="/catalog/:url/:id" element={<ProductPage />} />
-			<Route path="/order" element={<OrderPage />} />
 		</Routes>
 	);
 }

@@ -16,7 +16,7 @@ export function NotFoundPage() {
 		<Container>
 			<Title title={constants.notFoundPage.error} />
 			<span className={styles.message}>{constants.notFoundPage.message}</span>
-			<Button title={constants.notFoundPage.return} handleClick={handleClick} />
+			<Button handleClick={handleClick} title={constants.notFoundPage.return} />
 		</Container>
 	);
 }

@@ -3,32 +3,32 @@ import { constants } from "../constants/constants";
 export const pages = [
 	{
 		id: 1,
-		url: "/",
 		title: constants.pages.main,
+		url: constants.routes.main,
 	},
 	{
 		id: 2,
-		url: "catalog",
 		title: constants.pages.catalog,
+		url: constants.routes.catalog,
 	},
 	{
 		id: 3,
-		url: "about",
 		title: constants.pages.about,
+		url: constants.routes.about,
 	},
 	{
 		id: 4,
-		url: "delivery",
 		title: constants.pages.delivery,
+		url: constants.routes.delivery,
 	},
 	{
 		id: 5,
-		url: "stores",
 		title: constants.pages.stores,
+		url: constants.routes.stores,
 	},
 	{
 		id: 6,
-		url: "contacts",
 		title: constants.pages.contacts,
+		url: constants.routes.contacts,
 	},
 ];

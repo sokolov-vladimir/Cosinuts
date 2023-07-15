@@ -7,11 +7,11 @@ export function Search() {
 		<div className={styles.searchBox}>
 			<input
 				className={styles.searchField}
-				type="search"
 				placeholder={constants.placeholders.search}
+				type="search"
 			></input>
 			<div className={styles.searchButton}>
-				<img src={magnifier} alt="magnifier" />
+				<img alt="magnifier" src={magnifier} />
 			</div>
 		</div>
 	);

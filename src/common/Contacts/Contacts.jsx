@@ -9,27 +9,24 @@ export function Contacts() {
 		<div className={styles.container}>
 			<a
 				className={styles.contact}
-				href={`tel: ${constants.contacts.phones.beeline}`}
+				href={`tel: ${constants.contacts.phones.mts}`}
 			>
-				<img src={call} alt="handset" />
-				{constants.contacts.phones.beeline}
+				<img alt="handset" src={call} />
+				{constants.contacts.phones.mts}
 			</a>
 			<a
 				className={styles.contact}
-				href={`tel: ${constants.contacts.phones.megaphone}`}
+				href={`tel: ${constants.contacts.phones.velcom}`}
 			>
-				<img src={call} alt="handset" />
-				{constants.contacts.phones.megaphone}
+				<img alt="handset" src={call} />
+				{constants.contacts.phones.velcom}
 			</a>
-			<a
-				className={styles.contact}
-				href={`mailto: ${constants.contacts.phones.megaphone}`}
-			>
-				<img src={mail} alt="mail" />
+			<a className={styles.contact} href={`mailto: ${constants.contacts.mail}`}>
+				<img alt="mail" src={mail} />
 				{constants.contacts.mail}
 			</a>
 			<div className={styles.contact}>
-				<img src={location} alt="location" />
+				<img alt="location" src={location} />
 				{constants.contacts.address}
 			</div>
 		</div>

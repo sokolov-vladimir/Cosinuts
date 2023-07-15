@@ -7,7 +7,7 @@ export function Logo({ logoBig = true }) {
 
 	return (
 		<Link to="/">
-			<img src={logo} alt="logo" />
+			<img alt="logo" src={logo} />
 		</Link>
 	);
 }

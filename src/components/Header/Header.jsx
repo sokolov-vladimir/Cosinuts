@@ -4,7 +4,7 @@ import { HeaderBottom } from "./HeaderBottom/HeaderBottom";
 import { HeaderTop } from "./HeaderTop/HeaderTop";
 
 export function Header() {
-	const { state, pathname } = useLocation();
+	const { pathname, state } = useLocation();
 	const displayHeaderBottom =
 		(!state && <HeaderBottom />) || (pathname.length < 2 && <HeaderBottom />);
 
