@@ -110,7 +110,11 @@ export const constants = {
 		order: "/order",
 		product: "/catalog/:url/:id",
 		products: "/catalog/:url",
+		search: "/search",
 		stores: "/stores",
+	},
+	searchPage: {
+		notFound: "По выбранным Вами условиям товаров не найдено!",
 	},
 	socials: {
 		altFacebook: "facebook",
@@ -143,6 +147,7 @@ export const constants = {
 		cart: "Корзина",
 		catalog: "Наш ассортимент",
 		category: "Категории товаров",
+		search: "Поиск",
 	},
 	validation: {
 		errorName: "Заполните поле ФИО",

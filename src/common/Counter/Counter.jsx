@@ -14,6 +14,11 @@ export function Counter({ addStyles, category, product }) {
 
 	const dispatch = useDispatch();
 
+	const handleButtonClick = ({ currentTarget }) => {
+		setIsShowWeight(!isShowWeight);
+		dispatch(increaseWeight({ category: category, id: currentTarget.id }));
+	};
+
 	const handleWeightAdd = ({ currentTarget }) => {
 		dispatch(increaseWeight({ category: category, id: currentTarget.id }));
 	};
@@ -21,11 +26,6 @@ export function Counter({ addStyles, category, product }) {
 	const handleWeightSub = ({ currentTarget }) => {
 		if (cartWeight === 0.2) setIsShowWeight(!isShowWeight);
 		dispatch(decreaseWeight({ category: category, id: currentTarget.id }));
-	};
-
-	const handleButtonClick = ({ currentTarget }) => {
-		setIsShowWeight(!isShowWeight);
-		dispatch(increaseWeight({ category: category, id: currentTarget.id }));
 	};
 
 	const render = () => {

@@ -1,15 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import { AboutPage } from "../pages/AboutPage/AboutPage";
+import { CartPage } from "../pages/CartPage/CartPage";
 import { CatalogPage } from "../pages/CatalogPage/CatalogPage";
 import { CategoryPage } from "./../pages/CategoryPage/CategoryPage.jsx";
 import { constants } from "../constants/constants";
 import { ContactsPage } from "../pages/ContactsPage/ContactsPage";
 import { DeliveryPage } from "../pages/DeliveryPage/DeliveryPage";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
-import { StoresPage } from "../pages/StoresPage/StoresPage";
-import { CartPage } from "../pages/CartPage/CartPage";
-import { ProductPage } from "../pages/ProductPage/ProductPage";
 import { OrderPage } from "../pages/OrderPage/OrderPage";
+import { ProductPage } from "../pages/ProductPage/ProductPage";
+import { SearchPage } from "../pages/SearchPage/SearchPage";
+import { StoresPage } from "../pages/StoresPage/StoresPage";
 
 export function Router() {
 	return (
@@ -24,6 +25,7 @@ export function Router() {
 			<Route path={constants.routes.order} element={<OrderPage />} />
 			<Route path={constants.routes.product} element={<ProductPage />} />
 			<Route path={constants.routes.products} element={<CatalogPage />} />
+			<Route path={constants.routes.search} element={<SearchPage />} />
 			<Route path={constants.routes.stores} element={<StoresPage />} />
 		</Routes>
 	);

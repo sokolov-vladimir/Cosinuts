@@ -65,9 +65,7 @@ export function CartPage() {
 									/>
 									<Button
 										addStyles={styles.addStylesButton}
-										handleClick={() =>
-											removeProduct(product.cartCount, product.id, product.url)
-										}
+										handleClick={() => removeProduct(product.id, product.url)}
 										title="&times;"
 									/>
 								</div>

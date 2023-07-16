@@ -6,6 +6,7 @@ const productSlice = createSlice({
 	name: "productSlice",
 	initialState: {
 		products: initialState,
+		searchValue: "",
 	},
 	reducers: {
 		increaseWeight: (state, action) => {
@@ -20,6 +21,7 @@ const productSlice = createSlice({
 		},
 		decreaseWeight: (state, action) => {
 			const product = findProduct(state, action);
+
 			product.cartWeight = +(product.cartWeight - 0.2).toFixed(1);
 			product.cartPrice = +(product.cartWeight * product.price).toFixed(2);
 
@@ -33,9 +35,12 @@ const productSlice = createSlice({
 			product.cartPrice = 0;
 			product.cartWeight = 0;
 		},
+		setSearchValue: (state, action) => {
+			state.searchValue = action.payload;
+		},
 	},
 });
 
-export const { increaseWeight, decreaseWeight, deleteProduct } =
+export const { increaseWeight, decreaseWeight, deleteProduct, setSearchValue } =
 	productSlice.actions;
 export default productSlice.reducer;
