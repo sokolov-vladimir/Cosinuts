@@ -2,13 +2,17 @@ export const constants = {
 	buttons: {
 		cart: "Корзина",
 		choose: "Выбрать",
+		end: "Конец",
 		favourite: "Избранное",
 		inCart: "В корзину",
 		minus: "-",
+		next: ">>",
 		order: "Заказать",
 		placeOrder: "Оформить заказ",
 		plus: "+",
+		previous: "<<",
 		profile: "Войти",
+		start: "Начало",
 	},
 	cities: {
 		brest: "Брест",

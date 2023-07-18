@@ -5,6 +5,8 @@ import { initialState } from "./initialState";
 const productSlice = createSlice({
 	name: "productSlice",
 	initialState: {
+		currentPage: 1,
+		pageSize: 3,
 		products: initialState,
 		searchValue: "",
 	},
@@ -35,12 +37,20 @@ const productSlice = createSlice({
 			product.cartPrice = 0;
 			product.cartWeight = 0;
 		},
+		setCurrentPage: (state, action) => {
+			state.currentPage = action.payload;
+		},
 		setSearchValue: (state, action) => {
 			state.searchValue = action.payload;
 		},
 	},
 });
 
-export const { increaseWeight, decreaseWeight, deleteProduct, setSearchValue } =
-	productSlice.actions;
+export const {
+	increaseWeight,
+	decreaseWeight,
+	deleteProduct,
+	setSearchValue,
+	setCurrentPage,
+} = productSlice.actions;
 export default productSlice.reducer;

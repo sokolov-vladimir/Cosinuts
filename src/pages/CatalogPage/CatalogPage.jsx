@@ -1,22 +1,50 @@
 import { useParams } from "react-router";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./CatalogPage.module.scss";
 import { Card } from "../../common/Card/Card";
 import { CategoryNavigation } from "../../common/Navigation/CategoryNavigation/CategoryNavigation";
 import { constants } from "../../constants/constants";
 import { Container } from "../../common/Container/Container";
+import { Pagination } from "../../common/Pagination/Pagination";
 import { Search } from "../../common/Search/Search";
 import { Title } from "../../common/Title/Title";
 
 export function CatalogPage() {
 	const productsState = useSelector((state) => state.products.products);
 	const { url } = useParams();
-
 	const { products, url: categoryURL } = productsState.find((category) => {
 		return url === undefined
 			? category.url === "dried-fruits"
 			: category.url === url;
 	});
+
+	const { currentPage, pageSize } = useSelector((state) => state.products);
+	const [productsDisplay, setProductsDisplay] = useState([]);
+
+	useEffect(() => {
+		let productsCount = products.length;
+		let pagesCount = Math.ceil(productsCount / pageSize);
+
+		let startProduct = 0;
+
+		for (let i = 2; i <= pagesCount; i++) {
+			if (currentPage === 1) {
+				break;
+			}
+
+			startProduct += pageSize;
+
+			if (currentPage === i) {
+				break;
+			}
+		}
+
+		const endProduct = startProduct + pageSize;
+
+		const newArray = products.slice(startProduct, endProduct);
+		setProductsDisplay(newArray);
+	}, [categoryURL, currentPage, pageSize, products]);
 
 	return (
 		<Container>
@@ -33,17 +61,19 @@ export function CatalogPage() {
 
 				<div className={styles.content}>
 					<div className={styles.content_top}>
-						<div>1234</div>
+						<Pagination products={products} />
 						<Search />
 					</div>
 
 					<div className={styles.content_main}>
-						{products.map((product) => (
+						{productsDisplay.map((product) => (
 							<Card category={categoryURL} key={product.id} product={product} />
 						))}
 					</div>
 
-					<div className={styles.content_bottom}>1234</div>
+					<div className={styles.content_bottom}>
+						<Pagination products={products} />
+					</div>
 				</div>
 			</div>
 		</Container>
