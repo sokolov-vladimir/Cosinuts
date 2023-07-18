@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
 import styles from "./HeaderTop.module.scss";
 import call from "./../../../assets/images/icon_call.svg";
 import { CartButton } from "./CartButton/CartButton";
 import { constants } from "../../../constants/constants";
 import { Logo } from "../../../common/Logo/Logo";
 import { PagesNavigation } from "../../../common/Navigation/PagesNavigation/PagesNavigation";
+
+import { Entrance } from "./Entrance/Entrance";
 
 export function HeaderTop() {
 	return (
@@ -22,12 +23,7 @@ export function HeaderTop() {
 						<img src={call} alt="handset" />
 						{constants.contacts.phones.mts}
 					</a>
-					<Link className={styles.profile} to="/profile" state={true}>
-						{constants.buttons.profile}
-					</Link>
-					{/* <Link className={styles.favourites} state={true} to="/favourites" >
-						{constants.buttons.favourite}
-					</Link> */}
+					<Entrance />
 					<CartButton />
 				</div>
 			</div>

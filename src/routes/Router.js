@@ -9,6 +9,7 @@ import { DeliveryPage } from "../pages/DeliveryPage/DeliveryPage";
 import { NotFoundPage } from "../pages/NotFoundPage/NotFoundPage";
 import { OrderPage } from "../pages/OrderPage/OrderPage";
 import { ProductPage } from "../pages/ProductPage/ProductPage";
+import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { SearchPage } from "../pages/SearchPage/SearchPage";
 import { StoresPage } from "../pages/StoresPage/StoresPage";
 
@@ -25,6 +26,7 @@ export function Router() {
 			<Route path={constants.routes.order} element={<OrderPage />} />
 			<Route path={constants.routes.product} element={<ProductPage />} />
 			<Route path={constants.routes.products} element={<CatalogPage />} />
+			<Route path={constants.routes.profile} element={<ProfilePage />} />
 			<Route path={constants.routes.search} element={<SearchPage />} />
 			<Route path={constants.routes.stores} element={<StoresPage />} />
 		</Routes>

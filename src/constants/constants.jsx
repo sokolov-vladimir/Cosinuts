@@ -2,6 +2,8 @@ export const constants = {
 	buttons: {
 		cart: "Корзина",
 		choose: "Выбрать",
+		enter: "Войти",
+		exit: "Выйти",
 		end: "Конец",
 		favourite: "Избранное",
 		inCart: "В корзину",
@@ -11,7 +13,7 @@ export const constants = {
 		placeOrder: "Оформить заказ",
 		plus: "+",
 		previous: "<<",
-		profile: "Войти",
+		registration: "Регистрация",
 		start: "Начало",
 	},
 	cities: {
@@ -39,6 +41,16 @@ export const constants = {
 	},
 	counter: {
 		inCart: "В корзине",
+	},
+	entrance: {
+		authEnter: "Войдите в аккаунт",
+		authRegister: "Зарегистрируйте аккаунт",
+		enter: "Войти",
+		register: "Зарегистрироваться",
+		useAccount: "Использовать существующий аккаунт",
+	},
+	errors: {
+		profileExit: "Что-то пошло не так...",
 	},
 	measurement: {
 		kilo: "кг",
@@ -114,6 +126,7 @@ export const constants = {
 		order: "/order",
 		product: "/catalog/:url/:id",
 		products: "/catalog/:url",
+		profile: "/profile",
 		search: "/search",
 		stores: "/stores",
 	},
@@ -151,6 +164,7 @@ export const constants = {
 		cart: "Корзина",
 		catalog: "Наш ассортимент",
 		category: "Категории товаров",
+		profile: "Личный кабинет",
 		search: "Поиск",
 	},
 	validation: {
