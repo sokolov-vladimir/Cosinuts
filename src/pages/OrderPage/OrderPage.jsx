@@ -41,6 +41,7 @@ export function OrderPage() {
 		});
 
 		setIsHandleOrder(true);
+		localStorage.setItem("posts", JSON.stringify(orderList));
 		console.log(formState);
 	};
 
@@ -85,6 +86,7 @@ export function OrderPage() {
 				<Title title={constants.orderPage.title} />
 				<div className={styles.container}>
 					<OrderForm
+						dispatch={dispatch}
 						error={error}
 						formState={formState}
 						handleChange={handleChange}

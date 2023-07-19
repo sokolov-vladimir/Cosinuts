@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import styles from "./Search.module.scss";
@@ -9,7 +9,15 @@ import { setSearchValue } from "../../reducer/productSlice";
 export function Search() {
 	const searchValueState = useSelector((state) => state.products.searchValue);
 	const dispatch = useDispatch();
+
 	const { pathname } = useLocation();
+	const navigate = useNavigate();
+
+	const handlePressEnterKey = (event) => {
+		if (event.keyCode === 13) {
+			navigate("/search", { state: true });
+		}
+	};
 
 	useEffect(() => {
 		if (
@@ -25,6 +33,7 @@ export function Search() {
 			<input
 				className={styles.searchField}
 				onChange={(e) => dispatch(setSearchValue(e.target.value))}
+				onKeyDown={handlePressEnterKey}
 				placeholder={constants.placeholders.search}
 				type="search"
 				value={searchValueState}

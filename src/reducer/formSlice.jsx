@@ -1,4 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
+
+export const setCookies = createAsyncThunk(
+	"formData/setCookies",
+	async (action) => {
+		Cookies.set("formData", action, { expires: 7, path: "" });
+		// console.log(JSON.parse(Cookies.get("formData")));
+	}
+);
 
 const initialState = {
 	building: "",

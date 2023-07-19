@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import styles from "./OrderForm.module.scss";
 import { constants } from "../../../constants/constants";
 import { Button } from "../../../common/Button/Button";
 import { OrderSection } from "../OrderSection/OrderSection";
+import { setCookies } from "../../../reducer/formSlice";
 
 export function OrderForm({
+	dispatch,
 	error,
 	formState,
 	handleChange,
@@ -11,6 +14,10 @@ export function OrderForm({
 	handleSubmit,
 	isDisabled,
 }) {
+	useEffect(() => {
+		dispatch(setCookies(JSON.stringify(formState)));
+	}, [formState]);
+
 	return (
 		<form className={styles.form_container} onSubmit={handleSubmit}>
 			<OrderSection title={constants.orderForm.titleDelivery}>
