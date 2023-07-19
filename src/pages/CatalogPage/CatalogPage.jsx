@@ -7,6 +7,7 @@ import { CategoryNavigation } from "../../common/Navigation/CategoryNavigation/C
 import { constants } from "../../constants/constants";
 import { Container } from "../../common/Container/Container";
 import { Pagination } from "../../common/Pagination/Pagination";
+import { ScrollToTop } from "../../common/ScrollToTop/ScrollToTop";
 import { Search } from "../../common/Search/Search";
 import { Title } from "../../common/Title/Title";
 
@@ -47,35 +48,45 @@ export function CatalogPage() {
 	}, [categoryURL, currentPage, pageSize, products]);
 
 	return (
-		<Container>
-			<Title title={constants.titles.catalog} />
+		<>
+			<ScrollToTop />
 
-			<div className={styles.container}>
-				<div className={styles.navigation}>
-					<h4 className={styles.navigation_title}>{constants.pages.catalog}</h4>
-					<CategoryNavigation
-						activeLink={styles.add_activeLink}
-						addStyles={styles.add_navigation}
-					/>
+			<Container>
+				<Title title={constants.titles.catalog} />
+
+				<div className={styles.container}>
+					<div className={styles.navigation}>
+						<h4 className={styles.navigation_title}>
+							{constants.pages.catalog}
+						</h4>
+						<CategoryNavigation
+							activeLink={styles.add_activeLink}
+							addStyles={styles.add_navigation}
+						/>
+					</div>
+
+					<div className={styles.content}>
+						<div className={styles.content_top}>
+							<Pagination products={products} />
+							<Search />
+						</div>
+
+						<div className={styles.content_main}>
+							{productsDisplay.map((product) => (
+								<Card
+									category={categoryURL}
+									key={product.id}
+									product={product}
+								/>
+							))}
+						</div>
+
+						<div className={styles.content_bottom}>
+							<Pagination products={products} />
+						</div>
+					</div>
 				</div>
-
-				<div className={styles.content}>
-					<div className={styles.content_top}>
-						<Pagination products={products} />
-						<Search />
-					</div>
-
-					<div className={styles.content_main}>
-						{productsDisplay.map((product) => (
-							<Card category={categoryURL} key={product.id} product={product} />
-						))}
-					</div>
-
-					<div className={styles.content_bottom}>
-						<Pagination products={products} />
-					</div>
-				</div>
-			</div>
-		</Container>
+			</Container>
+		</>
 	);
 }

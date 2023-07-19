@@ -8,6 +8,7 @@ import { constants } from "../../constants/constants";
 import { deleteProduct } from "../../reducer/productSlice";
 import { OrderForm } from "./OrderForm/OrderForm";
 import { OrderList } from "./OrderList/OrderList";
+import { ScrollToTop } from "../../common/ScrollToTop/ScrollToTop";
 import { Title } from "../../common/Title/Title";
 import { useValidate } from "./../../validation/useValidate";
 
@@ -73,30 +74,43 @@ export function OrderPage() {
 		formState.cookie,
 	]);
 
-	if (isHandleOrder) {
-		return (
-			<Container>
-				<Title title={constants.orderPage.title} />
-				<h2>{constants.orderPage.orderPlaced}</h2>
-			</Container>
-		);
-	} else {
-		return (
-			<Container>
-				<Title title={constants.orderPage.title} />
-				<div className={styles.container}>
-					<OrderForm
-						dispatch={dispatch}
-						error={error}
-						formState={formState}
-						handleChange={handleChange}
-						handleOrder={handleOrder}
-						handleSubmit={handleSubmit}
-						isDisabled={isDisabled}
-					/>
-					<OrderList orderList={orderList} countTotalPrice={countTotalPrice} />
-				</div>
-			</Container>
-		);
-	}
+	const render = () => {
+		if (isHandleOrder) {
+			return (
+				<Container>
+					<Title title={constants.orderPage.title} />
+					<h2>{constants.orderPage.orderPlaced}</h2>
+				</Container>
+			);
+		} else {
+			return (
+				<Container>
+					<Title title={constants.orderPage.title} />
+					<div className={styles.container}>
+						<OrderForm
+							dispatch={dispatch}
+							error={error}
+							formState={formState}
+							handleChange={handleChange}
+							handleOrder={handleOrder}
+							handleSubmit={handleSubmit}
+							isDisabled={isDisabled}
+						/>
+						<OrderList
+							orderList={orderList}
+							countTotalPrice={countTotalPrice}
+						/>
+					</div>
+				</Container>
+			);
+		}
+	};
+
+	// return render();
+	return (
+		<>
+			<ScrollToTop />
+			{render()}
+		</>
+	);
 }
