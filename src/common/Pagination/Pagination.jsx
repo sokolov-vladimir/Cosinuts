@@ -22,7 +22,7 @@ export function Pagination({ products }) {
 		if (pagesCount >= 5) {
 			startPage = pagesCount - 4;
 		} else {
-			startPage = pagesCount;
+			startPage = 1;
 		}
 		endPage = pagesCount;
 	}
