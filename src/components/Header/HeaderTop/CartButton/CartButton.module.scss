@@ -1,30 +1,33 @@
 @import url(./../../../../styles/fonts.scss);
 @import url(./../../../../styles/variables.scss);
 
-.cartButton {
+.cart_button {
 	width: 150px;
 	height: 55px;
 	padding: 8px 8px 8px 18px;
 	border-radius: 14px;
 	display: flex;
-	column-gap: 10px;
 	justify-content: space-between;
 	align-items: center;
 	background-color: var(--color-button-dim);
 	transition: all 0.2s linear;
+	position: relative;
 
 	&:hover {
-		border-radius: 14px;
 		background-color: var(--color-button-bright);
 	}
 }
 
-.title {
+.cart_image {
+	display: none;
+}
+
+.cart_title {
 	font-family: Roboto-Bold;
 	color: var(--color-white);
 }
 
-.count {
+.cart_count {
 	width: 38px;
 	height: 38px;
 	border-radius: 10px;
@@ -34,4 +37,32 @@
 	font-family: Roboto-Bold;
 	color: var(--color-navigation);
 	background-color: var(--color-white);
+}
+
+@media (max-width: 960px) {
+	.cart_button {
+		width: auto;
+		padding: 12px;
+	}
+
+	.cart_image {
+		display: block;
+		height: 42px;
+		width: 42px;
+	}
+
+	.cart_title {
+		display: none;
+	}
+
+	.cart_count {
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		position: absolute;
+		top: -18px;
+		right: -18px;
+		color: var(--color-white);
+		background-color: var(--color-brown);
+	}
 }

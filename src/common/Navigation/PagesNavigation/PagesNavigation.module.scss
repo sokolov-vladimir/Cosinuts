@@ -6,6 +6,76 @@
 	column-gap: 30px;
 }
 
-.content a {
+.link {
+	padding: 10px 0;
+	position: relative;
 	color: var(--color-navigation);
+
+	&::before {
+		content: "";
+		display: block;
+		height: 2px;
+		width: 120%;
+		position: absolute;
+		left: -10%;
+		bottom: 0;
+		background-color: var(--color-button-bright);
+		transform: scaleX(0);
+		transition: transform 0.3s ease-out;
+	}
+
+	&:hover:before {
+		transform: scaleX(1);
+	}
+}
+
+@media (max-width: 1440px) {
+	.navigation {
+		height: 100vh;
+		width: 30vw;
+		display: flex;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: var(--color-gray-light);
+		opacity: 0;
+		visibility: hidden;
+		z-index: 1;
+		transform: translateX(-130%);
+		transition: all 0.3s ease-in-out;
+	}
+
+	.show_menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(0);
+	}
+
+	.content {
+		width: 100%;
+		padding: 180px 0 0 40px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		gap: 20px;
+	}
+
+	.blur {
+		height: 100vh;
+		width: 100vw;
+		position: absolute;
+		left: 30vw;
+		backdrop-filter: blur(2px);
+	}
+}
+
+@media (max-width: 640px) {
+	.show_menu {
+		width: 100%;
+	}
+
+	.blur {
+		width: 0;
+	}
 }

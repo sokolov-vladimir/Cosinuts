@@ -6,7 +6,7 @@ import magnifier from "./../../assets/images/icon_magnifier.svg";
 import { constants } from "../../constants/constants";
 import { setSearchValue } from "../../reducer/productSlice";
 
-export function Search() {
+export function Search({ addStyles }) {
 	const searchValueState = useSelector((state) => state.products.searchValue);
 	const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ export function Search() {
 
 	const handlePressEnterKey = (event) => {
 		if (event.keyCode === 13) {
-			navigate("/search", { state: true });
+			navigate(constants.routes.search, { state: true });
 		}
 	};
 
@@ -29,9 +29,9 @@ export function Search() {
 	}, []);
 
 	return (
-		<div className={styles.searchBox}>
+		<div className={`${addStyles} ${styles.search_box}`}>
 			<input
-				className={styles.searchField}
+				className={styles.search_field}
 				onChange={(e) => dispatch(setSearchValue(e.target.value))}
 				onKeyDown={handlePressEnterKey}
 				placeholder={constants.placeholders.search}
@@ -40,7 +40,7 @@ export function Search() {
 			></input>
 
 			<Link
-				className={styles.searchButton}
+				className={styles.search_button}
 				state={true}
 				to={constants.routes.search}
 			>

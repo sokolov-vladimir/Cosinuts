@@ -1,29 +1,23 @@
-// @import url(./../../../../styles/fonts.css);
+@import url(./../../../../styles/variables.scss);
 
-.container {
-	padding: 20px;
-	border-left: 1px solid #635c5a;
+.entrance {
+	width: 60px;
+	padding: 10px 0;
 	display: flex;
-	gap: 10px;
+	justify-content: center;
 	text-decoration: none;
 	cursor: pointer;
-
-	.title {
-		font-family: Gilroy-Medium;
-		font-size: 18px;
-		line-height: 21px;
-		color: #fff;
-	}
-
-	@media (max-width: 882px) {
-		& {
-			border-left: none;
-		}
-	}
 }
 
-.actionSelect {
-	font-size: 18px;
-	padding: 12px;
+.title {
+	color: var(--color-navigation);
+}
+
+.icon {
+	height: 36px;
+	width: 36px;
+}
+
+.action_select {
 	cursor: pointer;
 }

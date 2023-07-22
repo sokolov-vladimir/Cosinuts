@@ -12,7 +12,7 @@ export function CategoryPage() {
 	return (
 		<Container>
 			<Title title={constants.titles.category} />
-			<div className={styles.content}>
+			<div className={styles.container}>
 				{productsState.map((category) => (
 					<div className={styles.category} key={category.id}>
 						<Link
@@ -22,12 +22,14 @@ export function CategoryPage() {
 						>
 							<img
 								alt={category.image.alt}
-								className={styles.image}
+								className={styles.category_image}
 								src={category.image.src}
 							/>
 						</Link>
-						<h4 className={styles.title}>{category.title}</h4>
-						<p className={styles.description}>{category.description}</p>
+						<h4 className={styles.category_title}>{category.title}</h4>
+						<p className={styles.category_description}>
+							{category.description}
+						</p>
 						<Button
 							isLink={true}
 							title={constants.buttons.choose}

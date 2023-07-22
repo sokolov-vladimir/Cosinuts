@@ -1,10 +1,17 @@
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./CategoryNavigation.module.scss";
+import { constants } from "../../../constants/constants";
+import { setCurrentPage } from "../../../reducer/productSlice";
 
 export function CategoryNavigation({ activeLink, addStyles }) {
 	const productsState = useSelector((state) => state.products.products);
+	const dispatch = useDispatch();
 	const { url } = useParams();
+
+	const currentPageToStart = () => {
+		dispatch(setCurrentPage(1));
+	};
 
 	const isActive = (categoryID, categoryURL) => {
 		if (categoryID === 1 && url === undefined) {
@@ -22,8 +29,9 @@ export function CategoryNavigation({ activeLink, addStyles }) {
 				<Link
 					className={isActive(category.id, category.url)}
 					key={category.id}
+					onClick={currentPageToStart}
 					state={true}
-					to={`/catalog/${category.url}`}
+					to={`${constants.routes.catalog}/${category.url}`}
 				>
 					{category.title}
 				</Link>

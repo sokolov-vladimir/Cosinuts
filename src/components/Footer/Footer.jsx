@@ -9,13 +9,17 @@ import { Socials } from "../../common/Socials/Socials";
 export function Footer() {
 	return (
 		<footer className={styles.footer}>
-			<div className={`${styles.block} ${styles.logo}`}>
+			<div className={`${styles.footer_block} ${styles.footer_logo}`}>
 				<Logo logoBig={false} />
-				<Socials addStyles={styles.socials} />
+				<Socials addStyles={styles.add_socials_styles} />
 			</div>
 
-			<div className={styles.block}>
-				<Link className={styles.link} to={constants.routes.stores} state={true}>
+			<div className={`${styles.footer_block} ${styles.footer_stores}`}>
+				<Link
+					className={styles.footer_link}
+					to={constants.routes.stores}
+					state={true}
+				>
 					{constants.pages.stores}
 				</Link>
 				<span className={styles.stores_items}>{constants.stores.pickup}</span>
@@ -28,20 +32,20 @@ export function Footer() {
 				</span>
 			</div>
 
-			<div className={styles.block}>
+			<div className={`${styles.footer_block} ${styles.footer_navigation}`}>
 				<Link
-					className={styles.link}
+					className={styles.footer_link}
 					to={constants.routes.catalog}
 					state={true}
 				>
 					{constants.pages.catalog}
 				</Link>
-				<CategoryNavigation addStyles={styles.categoryNavigation} />
+				<CategoryNavigation addStyles={styles.add_navigation_styles} />
 			</div>
 
-			<div className={styles.block}>
+			<div className={`${styles.footer_block} ${styles.footer_contacts}`}>
 				<Link
-					className={styles.link}
+					className={styles.footer_link}
 					to={constants.routes.contacts}
 					state={true}
 				>

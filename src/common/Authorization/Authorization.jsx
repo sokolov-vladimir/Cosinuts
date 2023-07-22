@@ -16,6 +16,7 @@ export function Authorization({
 				{error && <span className={styles.error}>{error}</span>}
 				<div>
 					<input
+						className={styles.input}
 						id="email"
 						name="email"
 						onChange={handleChange}
@@ -26,6 +27,7 @@ export function Authorization({
 				</div>
 				<div>
 					<input
+						className={styles.input}
 						id="password"
 						name="password"
 						onChange={handleChange}

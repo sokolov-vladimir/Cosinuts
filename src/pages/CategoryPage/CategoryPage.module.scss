@@ -1,14 +1,16 @@
 @import url(./../../styles/fonts.scss);
 @import url(./../../styles/variables.scss);
 
-.content {
+.container {
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 	gap: 40px;
 }
 
 .category {
-	width: 400px;
+	width: 100%;
+	max-width: 400px;
 	padding: 15px;
 	border-radius: 24px;
 	display: flex;
@@ -21,18 +23,18 @@
 	display: flex;
 	overflow: hidden;
 	cursor: pointer;
+
+	.category_image {
+		width: 100%;
+		transition: all 0.2s linear;
+	}
+
+	.category_image:hover {
+		transform: scale(1.08);
+	}
 }
 
-.image {
-	width: 100%;
-	transition: all 0.2s linear;
-}
-
-.image:hover {
-	transform: scale(1.08);
-}
-
-.title {
+.category_title {
 	margin: 20px 0;
 	align-self: center;
 	font-family: Roboto-Bold;
@@ -40,8 +42,8 @@
 	line-height: 25px;
 }
 
-.description {
-	height: 48px;
+.category_description {
+	min-height: 48px;
 	margin-bottom: 20px;
 	font-size: 16px;
 	line-height: 23px;

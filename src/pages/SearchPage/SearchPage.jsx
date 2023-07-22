@@ -38,7 +38,7 @@ export function SearchPage() {
 		setSearchedProducts(newArray);
 	}, [productsState, searchValueState]);
 
-	if (searchValueState.length) {
+	if (searchedProducts.length && searchValueState.length) {
 		return (
 			<Container>
 				<Title title={title} />

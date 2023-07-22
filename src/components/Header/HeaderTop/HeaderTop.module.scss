@@ -1,37 +1,30 @@
 @import url(./../../../styles/fonts.scss);
 @import url(./../../../styles/variables.scss);
 
-.wrapper {
-	display: flex;
-	justify-content: center;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	background-color: var(--color-background);
-	box-shadow: 0 2px 4px var(--color-background);
-	text-align: center;
-	z-index: 1;
-}
-
-.headerTop {
-	height: 180px;
+.header_top {
+	height: 120px;
 	width: 100%;
-	max-width: 1720px;
+	max-width: 1920px;
+	padding: 0 100px;
 	display: flex;
 	justify-content: space-between;
+	position: fixed;
+	top: 0;
 	background-color: var(--color-background);
+	box-shadow: 0 2px 4px var(--color-background);
 	z-index: 1;
+	transition: all 0.3s linear;
 }
 
-.headerLeft,
-.headerRight {
+.header_left,
+.header_right {
 	display: flex;
 	column-gap: 30px;
 	align-items: center;
+	transition: all 0.3s linear;
 }
 
-.phoneNumber {
+.phone_number {
 	padding: 10px 0;
 	display: flex;
 	column-gap: 10px;
@@ -39,9 +32,25 @@
 	color: var(--color-navigation);
 }
 
-.profile {
-	width: 52px;
-	padding: 10px 0;
-	font-family: Roboto-Bold;
-	color: var(--color-navigation);
+@media (max-width: 1760px) {
+	.header_top {
+		padding: 0 40px;
+	}
+}
+
+@media (max-width: 820px) {
+	.header_left,
+	.header_right {
+		column-gap: 20px;
+	}
+
+	.phone_number {
+		display: none;
+	}
+}
+
+@media (max-width: 480px) {
+	.add_logo_styles {
+		display: none;
+	}
 }

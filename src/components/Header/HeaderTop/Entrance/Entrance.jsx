@@ -50,7 +50,7 @@ export function Entrance() {
 			.then((response) => {
 				console.log(response.user);
 				setIsActive(!isActive);
-				navigate("/profile", { state: true });
+				navigate(constants.routes.profile, { state: true });
 			})
 			.catch((err) => {
 				setError(err.message);
@@ -65,8 +65,9 @@ export function Entrance() {
 				userAuthData.email,
 				userAuthData.password
 			);
+			navigate(constants.routes.profile, { state: true });
+			setIsActive(!isActive);
 			console.log(response);
-			setIsSignup(!isSignup);
 		} catch (err) {
 			setError(err.message);
 		}
@@ -82,7 +83,7 @@ export function Entrance() {
 		<>
 			{!isLogin ? (
 				<div
-					className={styles.container}
+					className={styles.entrance}
 					onClick={() => {
 						handlePopup();
 						cleanError();
@@ -91,8 +92,12 @@ export function Entrance() {
 					<span className={styles.title}>{constants.entrance.enter}</span>
 				</div>
 			) : (
-				<Link className={styles.container} state="true" to="/profile">
-					<img alt="profile" src={profile} />
+				<Link
+					className={styles.entrance}
+					state="true"
+					to={constants.routes.profile}
+				>
+					<img alt="profile" className={styles.icon} src={profile} />
 				</Link>
 			)}
 
@@ -115,7 +120,7 @@ export function Entrance() {
 				{isSignup ? (
 					<div>
 						<span
-							className={styles.actionSelect}
+							className={styles.action_select}
 							onClick={() => {
 								changeIsSignup();
 								cleanError();
@@ -127,7 +132,7 @@ export function Entrance() {
 				) : (
 					<div>
 						<span
-							className={styles.actionSelect}
+							className={styles.action_select}
 							onClick={() => {
 								changeIsSignup();
 								cleanError();

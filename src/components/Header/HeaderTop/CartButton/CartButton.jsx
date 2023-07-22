@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./CartButton.module.scss";
+import cart from "./../../../../assets/images/icon_cart.svg";
 import { constants } from "../../../../constants/constants";
 
 export function CartButton() {
@@ -21,9 +22,14 @@ export function CartButton() {
 	}, [productsState]);
 
 	return (
-		<Link className={styles.cartButton} state={true} to={constants.routes.cart}>
-			<span className={styles.title}>{constants.buttons.cart}</span>
-			<span className={styles.count}>{cartCount}</span>
+		<Link
+			className={styles.cart_button}
+			state={true}
+			to={constants.routes.cart}
+		>
+			<img alt="cart" className={styles.cart_image} src={cart} />
+			<span className={styles.cart_title}>{constants.buttons.cart}</span>
+			<span className={styles.cart_count}>{cartCount}</span>
 		</Link>
 	);
 }

@@ -6,5 +6,13 @@
 	font-size: 72px;
 	line-height: 84px;
 	letter-spacing: 1px;
+	text-align: center;
 	color: var(--color-title);
+}
+
+@media (max-width: 1740px) {
+	.title {
+		font-size: calc((72px - 36px) + 1.5vw);
+		line-height: calc((84px - 42px) + 2vw);
+	}
 }

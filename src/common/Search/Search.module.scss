@@ -1,12 +1,12 @@
 @import url(./../../styles/fonts.scss);
 @import url(./../../styles/variables.scss);
 
-.searchBox {
+.search_box {
 	display: flex;
 	position: relative;
 }
 
-.searchField {
+.search_field {
 	width: 630px;
 	padding: 40px 0 40px 30px;
 	border: none;
@@ -22,20 +22,39 @@
 	}
 }
 
-.searchButton {
+.search_button {
 	width: 108px;
-	height: 108px;
+	height: 100%;
 	border-radius: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	left: 522px;
+	right: 0px;
 	background-color: var(--color-button-dim);
 	cursor: pointer;
-	transition: all 0.2s linear;
+	transition: background-color 0.2s linear;
 
 	&:hover {
 		background-color: var(--color-button-bright);
+	}
+}
+
+@media (max-width: 1760px) {
+	.search_field {
+		height: calc((108px - 54px) + 2vw);
+		border-radius: calc((24px - 10px) + 0.5vw);
+		font-size: calc((24px - 12px) + 0.5vw);
+	}
+
+	.search_button {
+		width: calc((108px - 54px) + 2vw);
+		border-radius: calc((24px - 10px) + 0.5vw);
+	}
+}
+
+@media (max-width: 1280px) {
+	.search_button {
+		width: 80px;
 	}
 }

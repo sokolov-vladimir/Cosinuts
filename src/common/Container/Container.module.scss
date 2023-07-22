@@ -5,4 +5,12 @@
 	align-items: center;
 	flex: 1;
 	gap: 80px;
+	transition: all 0.3s linear;
+}
+
+@media (max-width: 620px) {
+	.container {
+		padding: 40px 20px;
+		gap: 40px;
+	}
 }

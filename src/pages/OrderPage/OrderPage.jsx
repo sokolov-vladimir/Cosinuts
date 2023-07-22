@@ -42,7 +42,7 @@ export function OrderPage() {
 		});
 
 		setIsHandleOrder(true);
-		localStorage.setItem("posts", JSON.stringify(orderList));
+		localStorage.setItem("products", JSON.stringify(orderList));
 		console.log(formState);
 	};
 
@@ -106,7 +106,6 @@ export function OrderPage() {
 		}
 	};
 
-	// return render();
 	return (
 		<>
 			<ScrollToTop />
