@@ -2,7 +2,8 @@
 @import url(./../../styles/variables.scss);
 
 .card {
-	width: 400px;
+	width: 100%;
+	max-width: 400px;
 	padding: 15px;
 	border-radius: 24px;
 	display: flex;
@@ -30,12 +31,14 @@
 .content {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	flex: 1;
 	gap: 20px;
+
 	text-align: center;
 }
 
 .title {
-	// margin: 20px 0;
 	align-self: center;
 	font-family: Roboto-Bold;
 	font-size: 21px;
@@ -43,23 +46,14 @@
 }
 
 .description {
-	height: 48px;
-	// margin-bottom: 20px;
+	height: 100%;
+	min-height: 72px;
 	font-size: 16px;
 	line-height: 23px;
-	// text-align: center;
 	color: var(--color-description);
 }
 
 .price_box {
 	display: flex;
 	justify-content: space-between;
-}
-
-.price {
-	// font-family: Roboto-Bold;
-	// font-size: 18px;
-}
-
-.measurement {
 }

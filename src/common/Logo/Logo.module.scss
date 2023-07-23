@@ -1,0 +1,16 @@
+.logo_brown {
+	width: 1120px;
+	transition: all 0.2s linear;
+}
+
+@media (max-width: 1920px) {
+	.logo_brown {
+		width: calc((1120px - 800px) + 40vw);
+	}
+}
+
+@media (max-width: 540px) {
+	.logo_brown {
+		width: calc((1120px - 860px) + 30vw);
+	}
+}

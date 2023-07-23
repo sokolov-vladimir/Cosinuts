@@ -3,12 +3,12 @@ import styles from "./Card.module.scss";
 import { constants } from "../../constants/constants";
 import { Counter } from "../Counter/Counter";
 
-export function Card({ category, product }) {
+export function Card({ addStyles, category, product }) {
 	const { description, images, price, title } = product;
 	const productURL = `${constants.routes.catalog}/${category}/${product.id}`;
 
 	return (
-		<div className={styles.card}>
+		<div className={`${addStyles} ${styles.card}`}>
 			<Link className={styles.image_box} state={true} to={productURL}>
 				<img alt={images.alt} className={styles.image} src={images.src}></img>
 			</Link>

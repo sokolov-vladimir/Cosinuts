@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Pagination.module.scss";
-import { constants } from "../../constants/constants";
+import arrow_back from "./../../assets/images/icon_arrow_back.svg";
+import arrow_next from "./../../assets/images/icon_arrow_next.svg";
 import { setCurrentPage } from "../../reducer/productSlice";
 
-export function Pagination({ products }) {
+export function Pagination({ addStyles, products }) {
 	const { currentPage, pageSize } = useSelector((state) => state.products);
 	const dispatch = useDispatch();
 
@@ -37,47 +38,35 @@ export function Pagination({ products }) {
 	};
 
 	return (
-		<div className={styles.pagination}>
-			<button
-				className={styles.button}
-				disabled={currentPage === 1}
-				onClick={() => onPageChanged(1)}
-			>
-				{constants.buttons.start}
-			</button>
+		<div className={`${addStyles} ${styles.pagination}`}>
 			<button
 				className={styles.button}
 				disabled={currentPage === 1}
 				onClick={() => onPageChanged(currentPage - 1)}
 			>
-				{constants.buttons.previous}
+				<img alt="arrow back" src={arrow_back} />
 			</button>
-			{pages.map((page, index) => {
-				return (
-					<div
-						key={index}
-						className={`${styles.pageList} ${
-							currentPage === page ? styles.active : ""
-						}`}
-						onClick={() => onPageChanged(page)}
-					>
-						{page}
-					</div>
-				);
-			})}
+			<div className={styles.pages}>
+				{pages.map((page, index) => {
+					return (
+						<span
+							className={`${styles.page} ${
+								currentPage === page ? styles.active : ""
+							}`}
+							key={index}
+							onClick={() => onPageChanged(page)}
+						>
+							{page}
+						</span>
+					);
+				})}
+			</div>
 			<button
 				className={styles.button}
 				disabled={currentPage === pagesCount}
 				onClick={() => onPageChanged(currentPage + 1)}
 			>
-				{constants.buttons.next}
-			</button>
-			<button
-				className={styles.button}
-				disabled={currentPage === pagesCount}
-				onClick={() => onPageChanged(pagesCount)}
-			>
-				{constants.buttons.end}
+				<img alt="arrow next" src={arrow_next} />
 			</button>
 		</div>
 	);

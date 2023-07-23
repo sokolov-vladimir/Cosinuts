@@ -2,6 +2,7 @@
 @import url(./../../../styles/variables.scss);
 
 .container {
+	min-width: 280px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -12,21 +13,23 @@
 	font-size: 18px;
 }
 
-.weightBox {
-	// width: 160px;
+.weight_box {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 10px;
 }
 
-.weight {
-}
-
-.addStylesButton {
+.add_button_styles {
 	flex: 1;
 }
 
-.addStylesButtonWeight {
+.add_button_weight_styles {
 	width: 55px;
+}
+
+@media (max-width: 420px) {
+	.container {
+		min-width: 100%;
+	}
 }

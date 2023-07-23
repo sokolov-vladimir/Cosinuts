@@ -1,3 +1,49 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
+
+.pagination {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.button {
+	height: 55px;
+	width: 55px;
+	border: none;
+	border-radius: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Roboto-Medium;
+	font-size: 24px;
+	line-height: 28px;
+	letter-spacing: 1px;
+	color: var(--color-white);
+	background-color: var(--color-button-dim);
+	cursor: pointer;
+	transition: all 0.2s linear;
+
+	&:hover {
+		font-family: Roboto-Bold;
+		background-color: var(--color-button-bright);
+	}
+}
+
+.pages {
+	display: flex;
+	gap: 10px;
+}
+
+.page {
+	font-size: 36px;
+	line-height: 24px;
+	letter-spacing: 1px;
+	color: var(--color-gray-medium);
+	cursor: pointer;
+}
+
 .active {
-	color: red;
+	font-weight: 600;
+	color: var(--color-description);
 }

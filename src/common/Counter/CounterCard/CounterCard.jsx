@@ -15,22 +15,21 @@ export function CounterCard({
 	if (isShowWeight) {
 		return (
 			<div className={styles.container}>
-				<span>{constants.counter.inCart} </span>
-				<div className={styles.weightBox}>
+				<div className={styles.weight_box}>
 					<Button
-						addStyles={styles.addStylesButtonWeight}
+						addStyles={styles.add_button_wight_styles}
 						handleClick={handleWeightSub}
 						id={id}
 						title={constants.buttons.minus}
 					/>
 					<span className={styles.weight}>{cartWeight.toFixed(1)}</span>
 					<Button
-						addStyles={styles.addStylesButtonWeight}
+						addStyles={styles.add_button_wight_styles}
 						handleClick={handleWeightAdd}
 						id={id}
 						title={constants.buttons.plus}
 					/>
-					<span>{constants.measurement.kilo}</span>
+					<span className={styles.kilo}>{constants.measurement.kilo}</span>
 				</div>
 				<span className={styles.price}>{cartPrice.toFixed(2)} &#x20bd;</span>
 			</div>
@@ -39,7 +38,7 @@ export function CounterCard({
 		return (
 			<div className={styles.container}>
 				<Button
-					addStyles={styles.addStylesButton}
+					addStyles={styles.add_button_styles}
 					handleClick={handleButtonClick}
 					id={id}
 					title={constants.buttons.inCart}

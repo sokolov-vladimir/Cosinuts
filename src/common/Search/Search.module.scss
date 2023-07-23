@@ -2,12 +2,15 @@
 @import url(./../../styles/variables.scss);
 
 .search_box {
+	width: 100%;
+	max-width: 630px;
 	display: flex;
 	position: relative;
 }
 
 .search_field {
-	width: 630px;
+	width: 100%;
+	max-width: 630px;
 	padding: 40px 0 40px 30px;
 	border: none;
 	border-radius: 25px;

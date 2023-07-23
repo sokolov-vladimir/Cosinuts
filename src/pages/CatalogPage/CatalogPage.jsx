@@ -51,7 +51,7 @@ export function CatalogPage() {
 		<>
 			<ScrollToTop />
 
-			<Container>
+			<Container addStyles={styles.add_container_styles}>
 				<Title title={constants.titles.catalog} />
 
 				<div className={styles.container}>
@@ -60,20 +60,24 @@ export function CatalogPage() {
 							{constants.pages.catalog}
 						</h4>
 						<CategoryNavigation
-							activeLink={styles.add_activeLink}
-							addStyles={styles.add_navigation}
+							activeLink={styles.add_active_link}
+							addStyles={styles.add_navigation_styles}
 						/>
 					</div>
 
 					<div className={styles.content}>
 						<div className={styles.content_top}>
-							<Pagination products={products} />
-							<Search />
+							<Pagination
+								addStyles={styles.add_pagination_styles}
+								products={products}
+							/>
+							<Search addStyles={styles.add_search_styles} />
 						</div>
 
 						<div className={styles.content_main}>
 							{productsDisplay.map((product) => (
 								<Card
+									addStyles={styles.add_card_styles}
 									category={categoryURL}
 									key={product.id}
 									product={product}
