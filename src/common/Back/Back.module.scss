@@ -1,0 +1,36 @@
+@import url(./../../styles/fonts.scss);
+@import url(./../../styles/variables.scss);
+
+.go_back {
+	display: flex;
+	align-items: center;
+	align-self: start;
+	gap: 10px;
+	font-size: 22px;
+	line-height: 24px;
+	cursor: pointer;
+
+	&:hover .arrow_box {
+		background-color: var(--color-button-bright);
+	}
+}
+
+.arrow_box {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: var(--color-button-dim);
+	position: relative;
+	cursor: pointer;
+
+	.arrow {
+		width: 14px;
+		height: 14px;
+		border-top: 3px solid var(--color-white);
+		border-left: 3px solid var(--color-white);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: rotate(-48deg) translate(20%, -55%);
+	}
+}

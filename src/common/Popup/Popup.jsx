@@ -1,19 +1,25 @@
 import styles from "./Popup.module.scss";
 
-export function Popup({ children, handlePopup, isActive }) {
+export function Popup({ addStyles, children, handlePopup, isActive }) {
+	const add_body_styles = () => {
+		if (addStyles) {
+			return addStyles;
+		} else {
+			if (isActive) {
+				return `${styles.active} ${styles.popup_body} `;
+			} else {
+				return `${styles.popup_body}`;
+			}
+		}
+	};
+
 	return (
 		<div
-			className={isActive ? `${styles.popup} ${styles.active}` : styles.popup}
+			className={isActive ? `${styles.active} ${styles.popup} ` : styles.popup}
 			onClick={() => handlePopup()}
 		>
-			<div
-				className={
-					isActive ? `${styles.popup_body} ${styles.active}` : styles.popup_body
-				}
-				onClick={(e) => e.stopPropagation()}
-			>
+			<div className={add_body_styles()} onClick={(e) => e.stopPropagation()}>
 				{children}
-
 				<div className={styles.popup_close} onClick={() => handlePopup()}>
 					&times;
 				</div>

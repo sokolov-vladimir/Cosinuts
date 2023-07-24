@@ -101,7 +101,7 @@ export function Entrance() {
 				</Link>
 			)}
 
-			<Popup isActive={isActive} handlePopup={handlePopup}>
+			<Popup handlePopup={handlePopup} isActive={isActive}>
 				<Authorization
 					error={error}
 					handleChange={handleChange}

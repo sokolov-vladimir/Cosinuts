@@ -4,17 +4,19 @@ export const constants = {
 		choose: "Выбрать",
 		enter: "Войти",
 		exit: "Выйти",
-		// end: "Конец",
 		favourite: "Избранное",
 		inCart: "В корзину",
 		minus: "-",
-		// next: ">",
 		order: "Заказать",
 		placeOrder: "Оформить заказ",
 		plus: "+",
-		// previous: "<",
 		registration: "Регистрация",
-		// start: "Начало",
+	},
+	caloric: {
+		calory: "Калорийность",
+		carb: "Углеводы",
+		fat: "Жиры",
+		protein: "Белки",
 	},
 	cities: {
 		brest: "Брест",
@@ -30,6 +32,9 @@ export const constants = {
 	cartPage: {
 		emptyBasket: "Корзина пуста",
 		totalSum: "Итого к оплате:",
+	},
+	common: {
+		goBack: "Вернуться назад",
 	},
 	contacts: {
 		address: "г. Минск, ул. Радиальная 56",
@@ -53,6 +58,7 @@ export const constants = {
 		profileExit: "Что-то пошло не так...",
 	},
 	measurement: {
+		gramm: "г",
 		kilo: "кг",
 	},
 	notFoundPage: {

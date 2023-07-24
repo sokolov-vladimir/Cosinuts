@@ -32,6 +32,7 @@ export function Counter({ addStyles, category, product }) {
 		if (isCartPage) {
 			return (
 				<CounterCart
+					addStyles={addStyles}
 					handleWeightAdd={handleWeightAdd}
 					handleWeightSub={handleWeightSub}
 					product={product}

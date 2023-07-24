@@ -10,7 +10,7 @@ export function CategoryPage() {
 	const productsState = useSelector((state) => state.products.products);
 
 	return (
-		<Container>
+		<Container addStyles={styles.add_container_styles}>
 			<Title title={constants.titles.category} />
 			<div className={styles.container}>
 				{productsState.map((category) => (

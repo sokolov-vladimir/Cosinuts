@@ -14,7 +14,7 @@ export function CounterCard({
 
 	if (isShowWeight) {
 		return (
-			<div className={styles.container}>
+			<div className={`${addStyles} ${styles.container}`}>
 				<div className={styles.weight_box}>
 					<Button
 						addStyles={styles.add_button_wight_styles}

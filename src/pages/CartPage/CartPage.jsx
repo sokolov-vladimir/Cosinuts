@@ -10,6 +10,8 @@ import { Counter } from "../../common/Counter/Counter";
 import { deleteProduct } from "../../reducer/productSlice";
 import { Title } from "../../common/Title/Title";
 
+import cart_empty from "./../../assets/images/icon_cart_empty.svg";
+
 export function CartPage() {
 	const productsState = useSelector((state) => state.products.products);
 	const dispatch = useDispatch();
@@ -35,64 +37,77 @@ export function CartPage() {
 	};
 
 	return (
-		<Container>
+		<Container addStyles={styles.add_container_styles}>
 			<Title title={constants.titles.cart} />
-			<div>
-				<div className={styles.container}>
-					<div className={styles.order}>
-						{basket.map((product) => (
-							<div className={styles.product} key={product.id}>
-								<div className={styles.productAbout}>
+			<div className={styles.container}>
+				<div className={styles.order}>
+					{basket.map((product) => (
+						<div className={styles.product} key={product.id}>
+							<div className={styles.product_about}>
+								<Link
+									state={true}
+									to={`${constants.routes.catalog}/${product.url}/${product.id}`}
+								>
+									<img
+										alt={product.images.alt}
+										className={styles.product_image}
+										src={product.images.src}
+									></img>
+								</Link>
+								<div className={styles.title_box}>
 									<Link
 										state={true}
+										className={styles.product_title}
 										to={`${constants.routes.catalog}/${product.url}/${product.id}`}
 									>
-										<img
-											alt={product.images.alt}
-											src={product.images.src}
-										></img>
+										{product.title}
 									</Link>
-									<div className={styles.titleBox}>
-										<span className={styles.title}>{product.title}</span>
-										<p className={styles.description}>{product.description}</p>
-									</div>
-								</div>
-								<div className={styles.productDetails}>
-									<Counter
-										addStyles={styles}
-										category={product.url}
-										product={product}
-									/>
-									<Button
-										addStyles={styles.addStylesButton}
-										handleClick={() => removeProduct(product.id, product.url)}
-										title="&times;"
-									/>
+									<p className={styles.product_description}>
+										{product.description}
+									</p>
 								</div>
 							</div>
-						))}
-					</div>
-
-					{basket.length ? (
-						<div className={styles.total}>
-							<div className={styles.totalBox}>
-								<span className={styles.totalTitle}>
-									{constants.cartPage.totalSum}{" "}
-								</span>
-								<span className={styles.totalPrice}>
-									{countTotalPrice().toFixed(2)} &#x20bd;
-								</span>
+							<div className={styles.product_details}>
+								<div className={styles.product_price}>
+									{product.price.toFixed(2)} &#x20bd;
+								</div>
+								<Counter category={product.url} product={product} />
+								<Button
+									addStyles={styles.add_button_styles}
+									handleClick={() => removeProduct(product.id, product.url)}
+									title="&times;"
+								/>
 							</div>
-							<Button
-								isLink={true}
-								title={constants.buttons.placeOrder}
-								to={constants.routes.order}
-							/>
 						</div>
-					) : (
-						<div>{constants.cartPage.emptyBasket}</div>
-					)}
+					))}
 				</div>
+
+				{basket.length ? (
+					<div className={styles.total}>
+						<div className={styles.total_box}>
+							<span className={styles.total_title}>
+								{constants.cartPage.totalSum}{" "}
+							</span>
+							<span className={styles.total_price}>
+								{countTotalPrice().toFixed(2)} &#x20bd;
+							</span>
+						</div>
+						<Button
+							isLink={true}
+							title={constants.buttons.placeOrder}
+							to={constants.routes.order}
+						/>
+					</div>
+				) : (
+					<div className={styles.empty_box}>
+						<img
+							alt="empty cart"
+							className={styles.empty_image}
+							src={cart_empty}
+						/>
+						{constants.cartPage.emptyBasket}
+					</div>
+				)}
 			</div>
 		</Container>
 	);
