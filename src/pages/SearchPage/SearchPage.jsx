@@ -40,9 +40,9 @@ export function SearchPage() {
 
 	if (searchedProducts.length && searchValueState.length) {
 		return (
-			<Container>
+			<Container addStyles={styles.add_container_styles}>
 				<Title title={title} />
-				<div>
+				<div className={styles.container}>
 					{searchedProducts.map((product) => (
 						<Card category={product.url} key={product.id} product={product} />
 					))}
@@ -53,7 +53,7 @@ export function SearchPage() {
 		return (
 			<Container>
 				<Title title={title} />
-				<h2>{constants.searchPage.notFound}</h2>
+				<h2 className={styles.not_found}>{constants.searchPage.notFound}</h2>
 			</Container>
 		);
 	}

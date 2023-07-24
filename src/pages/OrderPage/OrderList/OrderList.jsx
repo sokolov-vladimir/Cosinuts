@@ -19,13 +19,18 @@ export function OrderList({ orderList, countTotalPrice }) {
 							src={product.images.src}
 						></img>
 					</Link>
-					<span className={styles.product_title}>{product.title}</span>
-					<span className={styles.product_weight}>
-						{product.cartWeight} {constants.measurement.kilo}
-					</span>
-					<span className={styles.product_price}>
-						{product.cartPrice.toFixed(2)} &#x20bd;
-					</span>
+
+					<div className={styles.content}>
+						<span className={styles.product_title}>{product.title}</span>
+						<div className={styles.price_box}>
+							<span className={styles.product_weight}>
+								{product.cartWeight} {constants.measurement.kilo}
+							</span>
+							<span className={styles.product_price}>
+								{product.cartPrice.toFixed(2)} &#x20bd;
+							</span>
+						</div>
+					</div>
 				</div>
 			))}
 			<div className={styles.order_total_sum}>

@@ -79,12 +79,14 @@ export function OrderPage() {
 			return (
 				<Container>
 					<Title title={constants.orderPage.title} />
-					<h2>{constants.orderPage.orderPlaced}</h2>
+					<h2 className={styles.order_placed}>
+						{constants.orderPage.orderPlaced}
+					</h2>
 				</Container>
 			);
 		} else {
 			return (
-				<Container>
+				<Container addStyles={styles.add_container_styles}>
 					<Title title={constants.orderPage.title} />
 					<div className={styles.container}>
 						<OrderForm

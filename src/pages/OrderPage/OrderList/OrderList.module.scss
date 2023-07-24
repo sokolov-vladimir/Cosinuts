@@ -3,7 +3,7 @@
 
 .order_container {
 	width: 100%;
-	max-width: 600px;
+	max-width: 680px;
 	padding: 20px;
 	border-radius: 12px;
 	display: flex;
@@ -33,9 +33,25 @@
 	display: block;
 }
 
+.content {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
 .product_title {
 	width: 100%;
-	max-width: 200px;
+	max-width: 280px;
+}
+
+.price_box {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
 }
 
 .product_weight {
@@ -51,10 +67,56 @@
 }
 
 .order_total_sum {
+	padding: 0 20px;
 	display: flex;
 	justify-content: space-between;
+	font-family: Roboto-Bold;
 }
 
 .total_sum {
-	width: 120px;
+	width: 100px;
+	text-align: center;
+}
+
+@media (max-width: 1300px) {
+	.order_container {
+		max-width: 100%;
+		order: -1;
+	}
+
+	.product_title {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 700px) {
+	.content {
+		flex-direction: column;
+	}
+
+	.price_box {
+		justify-content: start;
+	}
+
+	.product_price {
+		width: auto;
+	}
+}
+
+@media (max-width: 460px) {
+	.order_product {
+		gap: 0;
+	}
+
+	.product_image {
+		display: none;
+	}
+
+	.product_title {
+		text-align: center;
+	}
+
+	.price_box {
+		justify-content: space-between;
+	}
 }
