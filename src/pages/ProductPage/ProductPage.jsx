@@ -51,7 +51,11 @@ export function ProductPage() {
 								</span>
 							</div>
 							<div className={styles.cart_box}>
-								<Counter category={url} product={product} />
+								<Counter
+									category={url}
+									addStyles={styles.add_counter_styles}
+									product={product}
+								/>
 							</div>
 						</div>
 					</div>

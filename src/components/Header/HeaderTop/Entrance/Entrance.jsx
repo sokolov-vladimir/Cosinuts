@@ -48,7 +48,6 @@ export function Entrance() {
 			userAuthData.password
 		)
 			.then((response) => {
-				console.log(response.user);
 				setIsActive(!isActive);
 				navigate(constants.routes.profile, { state: true });
 			})
