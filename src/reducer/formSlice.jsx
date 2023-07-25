@@ -5,7 +5,6 @@ export const setCookies = createAsyncThunk(
 	"formData/setCookies",
 	async (action) => {
 		Cookies.set("formData", action, { expires: 7, path: "" });
-		// console.log(JSON.parse(Cookies.get("formData")));
 	}
 );
 

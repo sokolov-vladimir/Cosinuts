@@ -43,7 +43,6 @@ export function OrderPage() {
 
 		setIsHandleOrder(true);
 		localStorage.setItem("products", JSON.stringify(orderList));
-		console.log(formState);
 	};
 
 	const handleSubmit = (event) => {
