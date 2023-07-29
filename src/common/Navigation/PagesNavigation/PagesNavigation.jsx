@@ -16,7 +16,7 @@ export function PagesNavigation({ isShowMenu, setIsShowMenu }) {
 		>
 			<div
 				className={isShowMenu ? styles.blur : ""}
-				onClick={() => setIsShowMenu(!isShowMenu)}
+				onClick={() => setIsShowMenu(false)}
 			></div>
 			<div className={styles.content}>
 				{pages.map((page) => {
@@ -24,7 +24,7 @@ export function PagesNavigation({ isShowMenu, setIsShowMenu }) {
 						<NavLink
 							className={isActiveLink}
 							key={page.id}
-							onClick={() => setIsShowMenu(!isShowMenu)}
+							onClick={() => setIsShowMenu(false)}
 							state={true}
 							to={page.url}
 						>
