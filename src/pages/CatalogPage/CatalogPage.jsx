@@ -15,7 +15,7 @@ export function CatalogPage() {
 	const productsState = useSelector((state) => state.products.products);
 	const { url } = useParams();
 	const { products, url: categoryURL } = productsState.find((category) => {
-		return url === undefined || url === "Cosinuts"
+		return url === undefined
 			? category.url === "dried-fruits"
 			: category.url === url;
 	});

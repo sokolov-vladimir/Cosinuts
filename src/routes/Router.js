@@ -20,6 +20,7 @@ export function Router() {
 			<Route path={constants.routes.cart} element={<CartPage />} />
 			<Route path={constants.routes.catalog} element={<CatalogPage />} />
 			<Route path={constants.routes.contacts} element={<ContactsPage />} />
+			<Route path={constants.routes.home} element={<CategoryPage />} />
 			<Route path={constants.routes.delivery} element={<DeliveryPage />} />
 			<Route path={constants.routes.main} element={<CategoryPage />} />
 			<Route path={constants.routes.notFound} element={<NotFoundPage />} />

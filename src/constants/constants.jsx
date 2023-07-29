@@ -127,6 +127,7 @@ export const constants = {
 		catalog: "/catalog",
 		contacts: "/contacts",
 		delivery: "/delivery",
+		home: "/Cosinuts",
 		main: "/",
 		notFound: "*",
 		order: "/order",
