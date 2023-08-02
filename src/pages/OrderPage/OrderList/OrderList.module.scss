@@ -44,6 +44,7 @@
 .product_title {
 	width: 100%;
 	max-width: 280px;
+	font-family: Roboto-Medium;
 }
 
 .price_box {
@@ -70,6 +71,7 @@
 	padding: 0 20px;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	font-family: Roboto-Bold;
 }
 
@@ -105,11 +107,11 @@
 
 @media (max-width: 460px) {
 	.order_product {
-		gap: 0;
+		flex-direction: column;
 	}
 
 	.product_image {
-		display: none;
+		width: 100%;
 	}
 
 	.product_title {
@@ -117,6 +119,6 @@
 	}
 
 	.price_box {
-		justify-content: space-between;
+		justify-content: center;
 	}
 }

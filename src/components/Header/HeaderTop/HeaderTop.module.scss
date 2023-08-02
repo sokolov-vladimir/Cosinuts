@@ -2,18 +2,26 @@
 @import url(./../../../styles/variables.scss);
 
 .header_top {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--color-background);
+	box-shadow: 0 2px 4px var(--color-background);
+	z-index: 1;
+	transition: all 0.3s linear;
+}
+
+.wrapper {
 	height: 120px;
 	width: 100%;
 	max-width: 1920px;
 	padding: 0 100px;
 	display: flex;
 	justify-content: space-between;
-	position: fixed;
-	top: 0;
-	background-color: var(--color-background);
-	box-shadow: 0 2px 4px var(--color-background);
-	z-index: 1;
-	transition: all 0.3s linear;
+	align-self: center;
 }
 
 .header_left,
@@ -33,7 +41,7 @@
 }
 
 @media (max-width: 1760px) {
-	.header_top {
+	.wrapper {
 		padding: 0 40px;
 	}
 }

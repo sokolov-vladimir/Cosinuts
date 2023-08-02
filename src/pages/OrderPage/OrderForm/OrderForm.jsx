@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styles from "./OrderForm.module.scss";
 import { constants } from "../../../constants/constants";
 import { Button } from "../../../common/Button/Button";
-import { OrderSection } from "../OrderSection/OrderSection";
+import { OrderSection } from "./OrderSection/OrderSection";
 import { setCookies } from "../../../reducer/formSlice";
 
 export function OrderForm({

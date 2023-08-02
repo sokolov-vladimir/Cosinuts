@@ -2,13 +2,21 @@
 @import url(./../../styles/variables.scss);
 
 .footer {
+	display: flex;
+	justify-content: center;
+	background-color: var(--color-background);
+	box-shadow: 0 -2px 4px var(--color-background);
+}
+
+.wrapper {
+	width: 100%;
+	max-width: 1920px;
 	padding: 40px 100px;
 	display: flex;
 	justify-content: space-between;
 	gap: 40px;
 	background-color: var(--color-background);
 	box-shadow: 0 -2px 4px var(--color-background);
-	transition: all 0.2s linear;
 }
 
 .footer_block {
@@ -73,13 +81,13 @@
 }
 
 @media (max-width: 1540px) {
-	.footer {
+	.wrapper {
 		padding: 40px 40px;
 	}
 }
 
 @media (max-width: 1060px) {
-	.footer {
+	.wrapper {
 		justify-content: space-around;
 	}
 

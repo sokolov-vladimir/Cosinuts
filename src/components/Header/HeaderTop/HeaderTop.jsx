@@ -13,24 +13,26 @@ export function HeaderTop() {
 
 	return (
 		<div className={styles.header_top}>
-			<div className={styles.header_left}>
-				<Burger isShowMenu={isShowMenu} setIsShowMenu={setIsShowMenu} />
-				<Logo addStyles={styles.add_logo_styles} logoBig={false} />
-				<PagesNavigation
-					isShowMenu={isShowMenu}
-					setIsShowMenu={setIsShowMenu}
-				/>
-			</div>
-			<div className={styles.header_right}>
-				<a
-					className={styles.phone_number}
-					href={`tel: ${constants.contacts.phones.mts}`}
-				>
-					<img src={call} alt="handset" />
-					{constants.contacts.phones.mts}
-				</a>
-				<Entrance />
-				<CartButton />
+			<div className={styles.wrapper}>
+				<div className={styles.header_left}>
+					<Burger isShowMenu={isShowMenu} setIsShowMenu={setIsShowMenu} />
+					<Logo addStyles={styles.add_logo_styles} logoBig={false} />
+					<PagesNavigation
+						isShowMenu={isShowMenu}
+						setIsShowMenu={setIsShowMenu}
+					/>
+				</div>
+				<div className={styles.header_right}>
+					<a
+						className={styles.phone_number}
+						href={`tel: ${constants.contacts.phones.mts}`}
+					>
+						<img src={call} alt="handset" />
+						{constants.contacts.phones.mts}
+					</a>
+					<Entrance />
+					<CartButton />
+				</div>
 			</div>
 		</div>
 	);

@@ -5,6 +5,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 40px;
+	transition: all 0.3s linear;
 }
 
 .header_title_hidden {
@@ -18,6 +19,7 @@
 .wrapper {
 	display: flex;
 	gap: 40px;
+	transition: all 0.3s linear;
 }
 
 .product_image {
@@ -37,6 +39,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 40px;
+	transition: all 0.3s linear;
 }
 
 .header_box {
@@ -174,8 +177,20 @@
 }
 
 @media (max-width: 420px) {
+	.container {
+		gap: 20px;
+	}
+
+	.wrapper {
+		gap: 20px;
+	}
+
 	.header_description {
 		text-align: center;
+	}
+
+	.content {
+		gap: 20px;
 	}
 
 	.price_box {

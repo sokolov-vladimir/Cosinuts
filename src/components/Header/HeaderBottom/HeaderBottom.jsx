@@ -8,17 +8,19 @@ import { Search } from "../../../common/Search/Search";
 export function HeaderBottom() {
 	return (
 		<div className={styles.header_bottom}>
-			<div className={styles.content}>
-				<img alt="title" className={styles.title} src={title} />
-				<p className={styles.text}>{constants.texts.main}</p>
-				<img
-					alt="banner_small"
-					className={styles.banner_small}
-					src={banner_small}
-				/>
-				<Search addStyles={styles.add_search_styles} />
+			<div className={styles.wrapper}>
+				<div className={styles.content}>
+					<img alt="title" className={styles.title} src={title} />
+					<p className={styles.text}>{constants.texts.main}</p>
+					<img
+						alt="banner_small"
+						className={styles.banner_small}
+						src={banner_small}
+					/>
+					<Search addStyles={styles.add_search_styles} />
+				</div>
+				<img alt="banner_big" className={styles.banner_big} src={banner_big} />
 			</div>
-			<img alt="banner_big" className={styles.banner_big} src={banner_big} />
 		</div>
 	);
 }
